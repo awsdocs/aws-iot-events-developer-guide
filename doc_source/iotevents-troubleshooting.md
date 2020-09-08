@@ -12,6 +12,7 @@ See the following section to troubleshoot errors and find and possible solutions
 + [I get InvalidRequestException when I attempt to call `CreateDetectorModel` and `UpdateDetectorModel` APIs\.](#invalid-request)
 + [Amazon CloudWatch Logs contains error messages, when I use `action.setTimer`\.](#cw-logs-timer)
 + [Amazon CloudWatch Logs contains error and warning messages, when I use payload\.](#cw-logs-payload)
++ [Error: Incompatible data types \[<inferred\-types>\] found for <reference> in the following expression: <expression>](#troubleshoot-expressions-incompatible-data-types)
 
 ## I get errors when I attempt to create a detector model\.<a name="detector-model"></a>
 
@@ -87,3 +88,31 @@ You can set up Amazon CloudWatch Logs to monitor AWS IoT Events detector model i
   **Solution:** Make sure that AWS IoT Events can evaluate your content expression for the action payload to valid JSON, if you define the payload type as `JSON`\. AWS IoT Events executes the action even if AWS IoT Events can't evaluate the content expression to valid JSON\.
 
 For more information, see [ Enable Amazon CloudWatch logging when developing AWS IoT Events detector models](https://docs.aws.amazon.com/iotevents/latest/developerguide/best-practices.html#best-practices-cw-logs)\.
+
+## Error: Incompatible data types \[<inferred\-types>\] found for <reference> in the following expression: <expression><a name="troubleshoot-expressions-incompatible-data-types"></a>
+
+**Solution:** You might receive this error for one of the following reasons:
++ The evaluated results of your references are not compatible with other operands in your expressions\.
++ The type of the argument passed to a function is not supported\.
+
+When you use references in expressions, check the following:<a name="expression-reference-type-compatibility"></a>
++ When you use a reference as an operand with one or more operators, make sure that all data types that you reference are compatible\.
+
+  For example, in the following expression, integer `2` is an operand of both the `==` and `&&` operators\. To ensure that the operands are compatible, `$variable.testVariable + 1` and `$variable.testVariable` must reference an integer or decimal\.
+
+  In addition, integer `1` is an operand of the `+` operator\. Therefore, `$variable.testVariable` must reference an integer or decimal\.
+
+  ```
+  ‘$variable.testVariable + 1 == 2 && $variable.testVariable’
+  ```
++ When you use a reference as an argument passed to a function, make sure that the function supports the data types that you reference\.
+
+  For example, the following `timeout("time-name")` function requires a string with double quotes as the argument\. If you use a reference for the *timer\-name* value, you must reference a string with double quotes\.
+
+  ```
+  timeout("timer-name")
+  ```
+**Note**  
+For the `convert(type, expression)` function, if you use a reference for the *type* value, the evaluated result of your reference must be `String`, `Decimal`, or `Boolean`\.
+
+For more information, see [References](expression-syntax.md#expression-reference)\. 

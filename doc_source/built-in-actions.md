@@ -1,6 +1,6 @@
 # Using built\-in actions<a name="built-in-actions"></a>
 
-AWS IoT Events supports the following actions that let you use a timer or set a variable:
+<a name="build-in-actions-intro"></a>AWS IoT Events supports the following actions that let you use a timer or set a variable:<a name="build-in-actions"></a>
 + [`setTimer`](#iotevents-set-timer) to create a timer\.
 + [`resetTimer`](#iotevents-reset-timer) to reset the timer\.
 + [`clearTimer`](#iotevents-clear-timer) to delete the timer\.

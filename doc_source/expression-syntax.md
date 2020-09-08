@@ -2,11 +2,13 @@
 
 You can use literals, operators, functions, references, and substitution templates in the AWS IoT Events expressions\.
 
-**Literals**
+## Literals<a name="expression-literal"></a>
 + Integer
 + Decimal
 + String
-+ BooleanOperators
++ Boolean
+
+## Operators<a name="expression-operator"></a>
 
 Unary  
 + Not \(Boolean\): `!`
@@ -16,7 +18,9 @@ Unary
 String  
 + Concatenation: **`+`**
 
-  Both operands must be strings\. String literals must be enclosed in single quotes \('\)\. For example: 'my' \+ 'string' \-> 'mystring'\.
+  Both operands must be strings\. String literals must be enclosed in single quotes \('\)\.
+
+  For example: `'my' + 'string'` \-> `'mystring'`
 
 Arithmetic  
 + Addition: **`+`**
@@ -31,16 +35,16 @@ Arithmetic
 Bitwise \(Integer\)  
 + OR: **`|`**
 
-  For example: 13 \| 5 \-> 13
+  For example: `13 | 5` \-> `13`
 + AND: **`&`**
 
-  For example: 13 & 5 \-> 5
+  For example: `13 & 5` \-> `5`
 + XOR: **`^`**
 
-  For example: 13 ^ 5 \-> 8
+  For example: `13 ^ 5` \-> `8`
 + NOT: **`~`**
 
-  For example: \~13 \-> \-14
+  For example: `~13` \-> `-14`
 
 Boolean  
 + Less Than: **`<`**
@@ -55,7 +59,9 @@ Boolean
 When a subexpression of `||` contains undefined data, that subexpression is treated as `false`\.
 
 Parentheses  
-You can use parentheses to group terms within an expression\.Functions
+You can use parentheses to group terms within an expression\.
+
+## Functions<a name="expression-function"></a>
 
 Built\-in Functions    
 `timeout("timer-name")`  
@@ -64,13 +70,13 @@ A timer set in one state can be referenced in another\. But you must ensure that
 To ensure accuracy, the minimum time that a timer should be set is 60 seconds\.  
 `timeout()` returns `true` only the first time it's checked following the actual timer expiration and returns `false` thereafter\.  
 `convert(type, expression)`  
-Evaluates to the value of the expression converted to the specified type\. The type can be one of `String`, `Boolean`, or `Decimal`\. Use one of these keywords or an expression that evaluates to a string containing the keyword\. Only the following conversions succeed and return a valid value:   
-+ Boolean \-> String
+Evaluates to the value of the expression converted to the specified type\. The *type* value must be `String`, `Boolean`, or `Decimal`\. Use one of these keywords or an expression that evaluates to a string containing the keyword\. Only the following conversions succeed and return a valid value:   
++ Boolean \-> string
 
-  Returns the string "true" or "false"\.
-+ Decimal \-> String
+  Returns the string `"true"` or `"false"`\.
++ Decimal \-> string
 + String \-> Boolean
-+ String \-> Decimal
++ String \-> decimal
 
   The string specified must be a valid representation of a decimal number, or `convert()` fails\.
 If `convert()` doesn't return a valid value, the expression that it's a part of is also invalid\. This result is equivalent to `false` and won't trigger the `actions` or transition to the `nextState` specified as part of the event in which the expression occurs\.  
@@ -87,7 +93,7 @@ Evaluates to `true` if the expression is undefined\. For example, if the input `
 isUndefined($input.MyInput.a)
 ```  
 `triggerType("type")`  
-The `type` can be `"Message"` or `"Timer"`\. Evaluates to `true` if the event condition in which it appears is being evaluated because a timer has expired like in the following example\.  
+The *type* value can be `"Message"` or `"Timer"`\. Evaluates to `true` if the event condition in which it appears is being evaluated because a timer has expired like in the following example\.  
 
 ```
 triggerType("Timer")
@@ -160,7 +166,9 @@ Evaluates the bitwise NOT of the integer expression \(the binary NOT operation i
 ```
 bitnot($input.MyInput.value)
 ```
-Both expressions must evaluate to an integer value\. If either expression does not evaluate to an integer value, then the result of the function is undefined\. No conversions are performed\.References
+Both expressions must evaluate to an integer value\. If either expression does not evaluate to an integer value, then the result of the function is undefined\. No conversions are performed\.
+
+## References<a name="expression-reference"></a>
 
 Inputs  
 `$input.input-name.path-to-data`  
@@ -209,7 +217,40 @@ You can set the values of variables only using the `setVariable` action\. You ca
 **Note**  
 In references that use identifiers that don't follow the \(regular expression\) pattern `[a-zA-Z][a-zA-Z0-9_]*`, you must enclose those identifiers in backticks \(```\)\. For example, a reference to an input named `MyInput` with a field named `_value` must specify this field as `$input.MyInput.`_value``\.
 
-**Substitution templates**  
+When you use references in expressions, check the following:<a name="expression-reference-type-compatibility"></a>
++ When you use a reference as an operand with one or more operators, make sure that all data types that you reference are compatible\.
+
+  For example, in the following expression, integer `2` is an operand of both the `==` and `&&` operators\. To ensure that the operands are compatible, `$variable.testVariable + 1` and `$variable.testVariable` must reference an integer or decimal\.
+
+  In addition, integer `1` is an operand of the `+` operator\. Therefore, `$variable.testVariable` must reference an integer or decimal\.
+
+  ```
+  ‘$variable.testVariable + 1 == 2 && $variable.testVariable’
+  ```
++ When you use a reference as an argument passed to a function, make sure that the function supports the data types that you reference\.
+
+  For example, the following `timeout("time-name")` function requires a string with double quotes as the argument\. If you use a reference for the *timer\-name* value, you must reference a string with double quotes\.
+
+  ```
+  timeout("timer-name")
+  ```
+**Note**  
+For the `convert(type, expression)` function, if you use a reference for the *type* value, the evaluated result of your reference must be `String`, `Decimal`, or `Boolean`\.
+
+AWS IoT Events expressions support integer, decimal, string, and Boolean data types\. The following table provides a list of incompatible pairs of types\.
+
+
+|  Incompatible pairs of types  | 
+| --- | 
+|  Integer, string  | 
+|  Integer, Boolean  | 
+|  Decimal, string  | 
+|  Decimal, Boolean  | 
+|  String, Boolean  | 
+
+## Substitution templates<a name="expression-substitution-template"></a>
+
+****  
 `'${expression}'`  
 The `${}` identifies the string as an interpolated string\. The `expression` can be any AWS IoT Events expression\. This includes operators, functions, and references\.  
 For example, you used the [SetVariableAction](https://docs.aws.amazon.com/iotevents/latest/apireference/API_SetVariableAction.html) action to define a variable\. The `variableName` is `SensorID`, and the `value` is `10`\. You can create the following substitution templates\.      

@@ -20,15 +20,22 @@ The [IAM User Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/) has more
 
 AWS IoT Events enables you to trigger actions which use other AWS services\. To do so, you must grant AWS IoT Events permission to perform these actions on your behalf\. This section contains a list of the actions and an example policy which grants permission to perform all these actions on your resources\. Change the *region* and *account\-id* references as required\. When possible, you should also change the wildcards \(\*\) to refer to specific resources that will be accessed\. You can use the IAM console to grant permission to AWS IoT Events to send an Amazon SNS alert that you have defined\. For more information, see [ Using the IAM console to manage roles and permissions](#iotevents-permissions-console)\.
 
-AWS IoT Events provides these types of actions for an event\.
-+ Send a message using the [Amazon Simple Notification Service \(Amazon SNS\)](https://docs.aws.amazon.com/sns/latest/dg/welcome.html) \(`actions.sns`\)\.
-+ Send a message using the [AWS IoT message broker](https://docs.aws.amazon.com/iot/latest/developerguide/iot-message-broker.html) \(`actions.iotTopicPublish`\)\.
-+ Set the value of a variable \(`actions.setVariable`\)\. No additional permissions are required for this type of action\.
-+ Set, reset, or clear a timer \(`actions.setTimer|resetTimer|clearTimer`\)\. No additional permissions are required for this type of action\.
-+ Call a [Lambda](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html) function, passing in information about the detector model instance and the event which triggered the action \(`actions.lambda`\)\.
-+ Send a message \(input\) back to AWS IoT Events, passing information about the detector model instance and the event which triggered the action \(`actions.iotEvents`\)\.
-+ Send information about the detector model instance and what triggered an event to an [ Amazon SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html) queue \(`actions.sqs`\)\.
-+ Send information about the detector model instance and what triggered an event to a [ Kinesis Data Firehose](https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html) stream \(`actions.firehose`\)\.
+<a name="build-in-actions-intro"></a>AWS IoT Events supports the following actions that let you use a timer or set a variable:<a name="build-in-actions"></a>
++ [`setTimer`](built-in-actions.md#iotevents-set-timer) to create a timer\.
++ [`resetTimer`](built-in-actions.md#iotevents-reset-timer) to reset the timer\.
++ [`clearTimer`](built-in-actions.md#iotevents-clear-timer) to delete the timer\.
++ [`setVariable`](built-in-actions.md#iotevents-set-variable) to create a variable\.
+
+<a name="work-with-aws-services-intro"></a>AWS IoT Events supports the following actions that let you work with AWS services: <a name="work-with-aws-services"></a>
++ [`iotTopicPublish`](iotevents-other-aws-services.md#iotevents-iotcore) to publish a message on an MQTT topic\.
++ [`iotEvents`](iotevents-other-aws-services.md#iotevents-iteinput) to send data to AWS IoT Events as an input value\.
++ [`iotSiteWise`](iotevents-other-aws-services.md#iotevents-iotsitewise) to send data to an asset property in AWS IoT SiteWise\.
++ [`dynamoDB`](iotevents-other-aws-services.md#iotevents-dynamodb) to send data to an Amazon DynamoDB table\.
++ [`dynamoDBv2`](iotevents-other-aws-services.md#iotevents-dynamodbv2) to send data to an Amazon DynamoDB table\.
++ [`firehose`](iotevents-other-aws-services.md#iotevents-firehose) to send data to an Amazon Kinesis Data Firehose stream\.
++ [`lambda`](iotevents-other-aws-services.md#iotevents-lambda) to invoke an AWS Lambda function\.
++ [`sns`](iotevents-other-aws-services.md#iotevents-sns) to send data as a push notification\.
++ [`sqs`](iotevents-other-aws-services.md#iotevents-sqs) to send data to an Amazon SQS queue\.
 
 **Example Policy**  
 
@@ -43,18 +50,18 @@ AWS IoT Events provides these types of actions for an event\.
      },
      {
        "Effect": "Allow",
-       "Action": "sns:Publish",
-       "Resource": "arn:aws:sns:<region>:<account_id>:*"
+       "Action": "iotevents:BatchPutMessage",
+       "Resource": "arn:aws:iotevents:<region>:<account_id>:input/*"
      },
      {
        "Effect": "Allow",
-       "Action": "sqs:SendMessage",
-       "Resource": "arn:aws:sqs:<region>:<account_id>:*"
+       "Action": "iotsitewise:BatchPutAssetPropertyValue",
+       "Resource": "*"
      },
      {
        "Effect": "Allow",
-       "Action": "lambda:InvokeFunction",
-       "Resource": "arn:aws:lambda:<region>:<account_id>:function:*"
+       "Action": "dynamodb:PutItem",
+       "Resource": "arn:aws:dynamodb:<region>:<account_id>:table/*"
      },
      {
        "Effect": "Allow",
@@ -66,8 +73,18 @@ AWS IoT Events provides these types of actions for an event\.
      },
      {
        "Effect": "Allow",
-       "Action": "iotevents:BatchPutMessage",
-       "Resource": "arn:aws:iotevents:<region>:<account_id>:input/*"
+       "Action": "lambda:InvokeFunction",
+       "Resource": "arn:aws:lambda:<region>:<account_id>:function:*"
+     },
+     {
+       "Effect": "Allow",
+       "Action": "sns:Publish",
+       "Resource": "arn:aws:sns:<region>:<account_id>:*"
+     },
+     {
+       "Effect": "Allow",
+       "Action": "sqs:SendMessage",
+       "Resource": "arn:aws:sqs:<region>:<account_id>:*"
      }
    ]
 }

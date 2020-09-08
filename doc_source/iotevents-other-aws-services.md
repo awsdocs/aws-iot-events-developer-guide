@@ -1,6 +1,6 @@
 # Working with other AWS services<a name="iotevents-other-aws-services"></a>
 
-AWS IoT Events supports the following actions that let you work with AWS services: 
+<a name="work-with-aws-services-intro"></a>AWS IoT Events supports the following actions that let you work with AWS services: <a name="work-with-aws-services"></a>
 + [`iotTopicPublish`](#iotevents-iotcore) to publish a message on an MQTT topic\.
 + [`iotEvents`](#iotevents-iteinput) to send data to AWS IoT Events as an input value\.
 + [`iotSiteWise`](#iotevents-iotsitewise) to send data to an asset property in AWS IoT SiteWise\.
