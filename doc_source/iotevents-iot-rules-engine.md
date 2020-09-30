@@ -68,6 +68,6 @@ In this example, you must send three messages with pressure readings below the t
 Now that you created a simple input and detector model, try the following\.
 + See more detector model examples \(templates\) on the console\.
 + Follow the steps in [Simple step\-by\-step example](iotevents-simple-example.md) to create an input and detector model using the AWS CLI
-+ Learn details of the [Using expressions](iotevents-expressions.md) used in events\. 
++ Learn details of the [Expressions](iotevents-expressions.md) used in events\. 
 + Learn about [Supported actions](iotevents-supported-actions.md)\.
 + If something isn't working, see [Troubleshooting AWS IoT Events](iotevents-troubleshooting.md)\.

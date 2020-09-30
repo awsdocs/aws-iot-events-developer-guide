@@ -115,4 +115,4 @@ When you use references in expressions, check the following:<a name="expression-
 **Note**  
 For the `convert(type, expression)` function, if you use a reference for the *type* value, the evaluated result of your reference must be `String`, `Decimal`, or `Boolean`\.
 
-For more information, see [References](expression-syntax.md#expression-reference)\. 
+For more information, see [References](iotevents-expressions.md#expression-reference)\. 

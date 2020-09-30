@@ -15,7 +15,7 @@
 You must choose the same AWS Region for both AWS IoT Events and the AWS services to work with\. For the list of supported Regions, see [AWS IoT Events endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/iot-events.html) in the *Amazon Web Services General Reference*\.
 You must use the same AWS Region when you create other AWS resources for the AWS IoT Events actions\. If you switch AWS Regions, you might have issues accessing the AWS resources\.
 
-By default, AWS IoT Events generates a standard payload in JSON for any action\. This action payload contains all attribute\-value pairs that have the information about the detector model instance and the event that triggered the action\. To configure the action payload, you can use a content expression\. For more information, see [Using expressions](iotevents-expressions.md) and the [Payload](https://docs.aws.amazon.com/iotevents/latest/apireference/API_Payload.html) data type in the *AWS IoT Events API Reference*\.
+By default, AWS IoT Events generates a standard payload in JSON for any action\. This action payload contains all attribute\-value pairs that have the information about the detector model instance and the event that triggered the action\. To configure the action payload, you can use a content expression\. For more information, see [Expressions](iotevents-expressions.md) and the [Payload](https://docs.aws.amazon.com/iotevents/latest/apireference/API_Payload.html) data type in the *AWS IoT Events API Reference*\.
 
 ## AWS IoT Core<a name="iotevents-iotcore"></a>
 
