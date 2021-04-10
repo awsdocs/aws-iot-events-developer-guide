@@ -23,7 +23,7 @@ For more information, see [Monitoring data with alarms](https://docs.aws.amazon.
 
 ## Acknowledge flow<a name="acknowledge-flow"></a>
 
-When you create an alarm model, you choose whether to enable acknowlege flow\. If you enable acknowledge flow, your team gets notified when the alarm state changes\. Your team can acknowledge the alarm and leave a note\. For example, you can include the information of the alarm and the actions that you're going to take to address the issue\. If the data that you're monitoring is outside the specified range, the alarm is invoked\.
+When you create an alarm model, you choose whether to enable acknowledge flow\. If you enable acknowledge flow, your team gets notified when the alarm state changes\. Your team can acknowledge the alarm and leave a note\. For example, you can include the information of the alarm and the actions that you're going to take to address the issue\. If the data that you're monitoring is outside the specified range, the alarm is invoked\.
 
 Alarms have the following states:
 

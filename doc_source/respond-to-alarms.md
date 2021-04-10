@@ -31,7 +31,7 @@ The following shows you how to respond to an alarm in the AWS IoT Events console
 
 ## Responding to alarms \(API\)<a name="respond-alarms-API"></a>
 
-To respond to one or more alarms, you can use the following AWS IoT Events APIs:
+To respond to one or more alarms, you can use the following AWS IoT Events API operations:
 + [BatchAcknowledgeAlarm](https://docs.aws.amazon.com/iotevents/latest/apireference/API_iotevents-data_BatchAcknowledgeAlarm.html)
 + [BatchDisableAlarm](https://docs.aws.amazon.com/iotevents/latest/apireference/API_iotevents-data_BatchDisableAlarm.html)
 + [BatchEnableAlarm](https://docs.aws.amazon.com/iotevents/latest/apireference/API_iotevents-data_BatchEnableAlarm.html)

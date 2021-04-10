@@ -2,15 +2,15 @@
 
 
 
-AWS IoT Events uses AWS Lambda functions to manage alarm notifications\. You can use the AWS IoT Events managed Lambda function or create a new one\.
+AWS IoT Events uses a Lambda function to manage alarm notifications\. You can use the Lambda function provided by AWS IoT Events or create a new one\.
 
-## Creating an Lambda function<a name="alarms-create-lambda"></a>
+## Creating a Lambda function<a name="alarms-create-lambda"></a>
 
-AWS IoT Events provides a service managed Lambda function that enables alarms to send and receive email and SMS notifications\.
+AWS IoT Events provides a Lambda function that enables alarms to send and receive email and SMS notifications\.
 
 ### Requirements<a name="alarms-lambda-requirements"></a>
 
-The following requirements apply when you create an Lambda function for alarms:
+The following requirements apply when you create a Lambda function for alarms:
 + If your alarm sends email or SMS notifications, you must have an IAM role that allows AWS Lambda to work with Amazon SES and Amazon SNS\.
 
   Example policy:
@@ -49,36 +49,36 @@ The following requirements apply when you create an Lambda function for alarms:
   ```
 + You must choose the same AWS Region for both AWS IoT Events and AWS Lambda\. For the list of supported Regions, see [AWS IoT Events endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/iot-events.html) and [AWS Lambda endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/lambda-service.html) in the *Amazon Web Services General Reference*\.
 
-### Deploying an AWS IoT Events managed Lambda function<a name="alarms-create-lambda-cfn"></a>
+### Deploying a Lambda function<a name="alarms-create-lambda-cfn"></a>
 
-This tutorial uses an AWS CloudFormation template to deploy an AWS IoT Events managed Lambda function\. This template automatically creates an IAM role that allows the Lambda function to work with Amazon SES and Amazon SNS\.
+This tutorial uses an AWS CloudFormation template to deploy a Lambda function\. This template automatically creates an IAM role that allows the Lambda function to work with Amazon SES and Amazon SNS\.
 
-The following shows you how to use the AWS Command Line Interface \(AWS CLI\) to create an AWS CloudFormation stack\.
+The following shows you how to use the AWS Command Line Interface \(AWS CLI\) to create a CloudFormation stack\.
 
 1. <a name="install-cli"></a>In your device's terminal, run `aws --version` to check if you installed the AWS CLI\. For more information, see [Installing the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html) in the *AWS Command Line Interface User Guide*\.
 
 1. <a name="configure-cli"></a>Run `aws configure list` to check if you configured the AWS CLI in the AWS Region that has all your AWS resources for this tutorial\. For more information, see [Configuring the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) in the *AWS Command Line Interface User Guide*
 
-1. Download the AWS CloudFormation template, [notificationLambda\.template\.yaml\.zip](samples/notificationLambda.template.yaml.zip)\.
+1. Download the CloudFormation template, [notificationLambda\.template\.yaml\.zip](samples/notificationLambda.template.yaml.zip)\.
 **Note**  
-If you have difficulty downloading the file, the template is also available in [AWS CloudFormation Template](#cfn-template)\.
+If you have difficulty downloading the file, the template is also available in the [CloudFormation template](#cfn-template)\.
 
 1. Unzip the content and save it locally as `notificationLambda.template.yaml`\.
 
 1. Open a terminal on your device and navigate to the directory where you downloaded the `notificationLambda.template.yaml` file\.
 
-1. To create an AWS CloudFormation stack, run the following command:
+1. To create a CloudFormation stack, run the following command:
 
    ```
    aws cloudformation create-stack --stack-name notificationLambda-stack --template-body file://notificationLambda.template.yaml --capabilities CAPABILITY_IAM
    ```
 
-You might modify this AWS CloudFormation template to customize the AWS Lambda function and its behavior\.
+You might modify this CloudFormation template to customize the Lambda function and its behavior\.
 
 **Note**  
 AWS Lambda retries function errors twice\. If the function doesn't have enough capacity to handle all incoming requests, events might wait in the queue for hours or days to be sent to the function\. You can configure a dead\-letter queue on the function to capture events that weren't successfully processed\. For more information, see [Asynchronous invocation](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html) in the *AWS Lambda Developer Guide*\.
 
-You can also create or configure the stack in the AWS CloudFormation console\. For more information, see [Working with stacks](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/UserGuide/stacks.html), in the *AWS CloudFormation User Guide*\.
+You can also create or configure the stack in the CloudFormation console\. For more information, see [Working with stacks](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacks.html), in the *AWS CloudFormation User Guide*\.
 
 ### Creating a custom Lambda function<a name="alarms-create-custom-lambda"></a>
 
@@ -86,9 +86,9 @@ You can create a Lambda function or modify the one provided by AWS IoT Events\.
 
 The following requirements apply when you create a custom Lambda function\.
 + Add permissions that allow your Lambda function to perform specified actions and access AWS resources\.
-+ If you use the AWS IoT Events managed Lambda function, make sure that you choose the Python 3\.7 runtime\.
++ If you use the Lambda function provided by AWS IoT Events, make sure that you choose the Python 3\.7 runtime\.
 
-AWS IoT Events managed Lambda function:
+Example Lambda function:
 
 ```
 import boto3
@@ -187,9 +187,9 @@ def lambda_handler(event, context):
 
 For more information, see [What is AWS Lambda?](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html) in the *AWS Lambda Developer Guide*\.
 
-### AWS CloudFormation Template<a name="cfn-template"></a>
+### CloudFormation template<a name="cfn-template"></a>
 
-Use the following AWS CloudFormation template to create your Lambda function\.
+Use the following CloudFormation template to create your Lambda function\.
 
 ```
 AWSTemplateFormatVersion: '2010-09-09'

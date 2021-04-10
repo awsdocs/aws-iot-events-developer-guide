@@ -1,7 +1,7 @@
 # AWS IoT Events Developer Guide
 
 -----
-*****Copyright &copy; 2020 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
+*****Copyright &copy;  Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
 Amazon's trademarks and trade dress may not be used in 
@@ -44,7 +44,7 @@ Amazon's trademarks and trade dress may not be used in
       + [Creating an alarm model (console)](create-alarm-model-console.md)
    + [Responding to alarms](respond-to-alarms.md)
    + [Managing alarm notifications](lambda-support.md)
-      + [Using the AWS IoT Events managed Lambda function](use-alarm-notifications.md)
+      + [Using the Lambda function provided by AWS IoT Events](use-alarm-notifications.md)
       + [Managing recipients](sso-authorization-recipients.md)
    + [Alarms preview AWS CLI and AWS SDKs](alarms-preview-SDKs.md)
 + [Security in AWS IoT Events](security.md)
@@ -63,5 +63,8 @@ Amazon's trademarks and trade dress may not be used in
 + [AWS IoT Events quotas](iotevents-quotas.md)
 + [Tagging your AWS IoT Events resources](tagging-iotevents.md)
 + [Troubleshooting AWS IoT Events](iotevents-troubleshooting.md)
+   + [Troubleshooting a detector model by running analyses](iotevents-analyze-api.md)
+      + [Analyzing a detector model](analyze-detector-model.md)
+   + [AWS IoT Events error messages](iotevents-error-messages.md)
 + [AWS IoT Events commands](iotevents-commands.md)
 + [Document history](doc-history.md)

@@ -13,6 +13,7 @@ To request a service quota increase, submit a support case in the [Support cente
 | Detector model versions | The maximum number of versions of a single detector model for this account\. | 500 | Yes | 
 | Detector models | The maximum number of detector models for this account\. | 50 | Yes | 
 | Detector models per input | The maximum number of detector models that can be associated with a single input\. | 10 | No | 
+| Detector model analyses | The maximum number of detector model analyses that can be in the RUNNING status for this account\. | 10 | Yes | 
 | Detectors per detector model | The maximum number of detectors that a detector model can create\. | 100,000 | Yes | 
 | Inputs | The maximum number of inputs for this account\. | 50 | Yes | 
 | Message size | The maximum size of a message, in kilobytes\. | 1 | Yes | 

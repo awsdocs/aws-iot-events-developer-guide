@@ -48,7 +48,7 @@ If you choose **AWS IoT SiteWise asset property**, you must have created an asse
 
 1. \(Optional\) In the **Notification settings** sections, you configure notification settings for the alarm\.
 
-   AWS IoT Events uses an AWS Lambda function to manage alarm notifications\. Follow the [instructions](https://docs.aws.amazon.com/iotevents/latest/developerguide/lambda-support.html) to create an Lambda function for your alarm\.
+   AWS IoT Events uses an AWS Lambda function to manage alarm notifications\. Follow the [instructions](https://docs.aws.amazon.com/iotevents/latest/developerguide/lambda-support.html) to create a Lambda function for your alarm\.
 
    Do the following:
 
@@ -56,7 +56,7 @@ If you choose **AWS IoT SiteWise asset property**, you must have created an asse
 
    1. 
       + For **Sender**, choose the email address that sends notifications\.
-      + Choose **Add sender** to add more email addresses to your sender list\. If you use the AWS IoT Events managed Lambda function, you must verify the sender email address in Amazon SES\. For more information, see [Using the AWS IoT Events managed Lambda function](use-alarm-notifications.md)\.
+      + Choose **Add sender** to add more email addresses to your sender list\. If you use the Lambda function provided by AWS IoT Events, you must verify the sender email address in Amazon SES\. For more information, see [Using the Lambda function provided by AWS IoT Events](use-alarm-notifications.md)\.
 
    1. You can add up to 10 notifications\. For **Notification 1**, do the following:
       + For **Recipient**, choose the recipient\.

@@ -42,6 +42,4 @@ The following shows you how to enable AWS IoT Events alarms commands in the AWS 
 
    The `aws iotevents-data-alarms` AWS CLI commands are now available\.
 
-[test links](https://aws-iot-events.s3.amazonaws.com/sdk/AWSIoTEventsAlarmsPreviewGoSDK.zip)
-
 For more information, see the [AWS IoT Events API Reference](https://docs.aws.amazon.com/iotevents/latest/apireference/)\.
