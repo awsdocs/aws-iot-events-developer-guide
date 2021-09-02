@@ -1,6 +1,6 @@
 # Creating an alarm model<a name="create-alarm-model"></a>
 
-You can use AWS IoT Events alarms to monitor your data and get notified when a threshold is breached\. Alarms provide parameters that you use to create or configure an alarm model\. You can use the AWS IoT Events console or AWS IoT Events API to create or configure the alarm model\. When you configure the alarm model, changes take effect as new data arrives \.
+You can use AWS IoT Events alarms to monitor your data and get notified when a threshold is breached\. Alarms provide parameters that you use to create or configure an alarm model\. You can use the AWS IoT Events console or AWS IoT Events API to create or configure the alarm model\. When you configure the alarm model, changes take effect as new data arrives\.
 
 ## Requirements<a name="create-alarm-model-requirements"></a>
 
@@ -15,7 +15,7 @@ The following requirements apply when you create an alarm model\.
         "input": {
             "inputConfiguration": {
                 "inputName": "TemperatureInput",
-                "inputDescription": "Temperature readings from a sentor",
+                "inputDescription": "Temperature readings from a sensor",
                 "inputArn": "arn:aws:iotevents:us-east-1:123456789012:input/TemperatureInput",
                 "creationTime": "2020-11-29T20:24:07.161000-08:00",
                 "lastUpdateTime": "2020-11-29T20:24:07.161000-08:00",

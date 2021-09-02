@@ -166,7 +166,7 @@ You can use conditions in your identity\-based policy to control access to AWS I
             "Action": "iotevents:ListInputs",
             "Resource": "arn:aws:iotevents:*:*:input/*",
             "Condition": {
-                "StringEquals": {"iotevents:ResourceTag/Owner": "${aws:username}"}
+                "StringEquals": {"aws:ResourceTag/Owner": "${aws:username}"}
             }
         }
     ]

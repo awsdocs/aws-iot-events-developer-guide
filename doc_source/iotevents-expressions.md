@@ -183,7 +183,7 @@ For example, if you have an input named `TemperatureInput` for which you defined
 ```
 {
     "temperature": 78.5,
-    "date": 2018-10-03T16:09:09Z
+    "date": "2018-10-03T16:09:09Z"
   }
 ```
 To reference the value of the `temperature` field, use the following command\.  
@@ -200,7 +200,7 @@ For fields whose values are arrays, you can reference members of the array using
       77.9,
       78.8
     ],
-    "date": 2018-10-03T16:09:09Z
+    "date": "2018-10-03T16:09:09Z"
   }
 ```
 The value `78.8` can be referenced with the following command\.  

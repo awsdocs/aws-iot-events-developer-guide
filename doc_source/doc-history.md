@@ -4,10 +4,10 @@ The following table describes the important changes to the *AWS IoT Events Devel
 
 | Change | Description | Date | 
 | --- |--- |--- |
-| [Troubleshooting a detector model by running analyses](https://docs.aws.amazon.com/iotevents/latest/developerguide/iotevents-analyze-api.html) | AWS IoT Events can now analyze your detector model and generate analysis results that you can use to troubleshoot your detector model\. | February 23, 2021 | 
-| [Monitoring with alarms](https://docs.aws.amazon.com/iotevents/latest/developerguide/iotevents-alarms.html) | Alarms help you monitor your data for changes\. You can create alarms that send notifications when a threshold is breached\. | December 15, 2020 | 
+| [Troubleshoot a detector model by running analyses](https://docs.aws.amazon.com/iotevents/latest/developerguide/iotevents-analyze-api.html) | AWS IoT Events can now analyze your detector model and generate analysis results that you can use to troubleshoot your detector model\. | February 23, 2021 | 
 | [Region launch](https://docs.aws.amazon.com/general/latest/gr/iot-events.html) | Launched AWS IoT Events in China \(Beijing\)\. | September 30, 2020 | 
 | [Expression usage](https://docs.aws.amazon.com/iotevents/latest/developerguide/expression-usage.html) | Added examples to show you how to write expressions\. | September 22, 2020 | 
+| [Monitoring with alarms](https://docs.aws.amazon.com/iotevents/latest/developerguide/iotevents-alarms.html) | Alarms help you monitor your data for changes\. You can create alarms that send notifications when a threshold is breached\. | June 1, 2020 | 
 
 ## Earlier updates<a name="doc-history-archive"></a>
 

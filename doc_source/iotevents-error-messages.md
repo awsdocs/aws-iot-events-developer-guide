@@ -1,22 +1,26 @@
-# AWS IoT Events error messages<a name="iotevents-error-messages"></a>
+# Common AWS IoT Events issues and solutions<a name="iotevents-error-messages"></a>
 
-See the following section to troubleshoot errors and find and possible solutions to resolve issues with AWS IoT Events\.
+See the following section to troubleshoot errors and find possible solutions to resolve issues with AWS IoT Events\.
 
 **Topics**
-+ [I get errors when I attempt to create a detector model\.](#create-detector-model)
-+ [I get state updates from the old detector model through MQTT messages or SNS alerts after I deleted or updated a detector model a few minutes ago\.](#update-detector-model)
-+ [The detector fails to trigger an action or transition to a new state when the condition is met\.](#no-action)
-+ [Detectors don't trigger an action or a transition event when the variable reaches the specified value\.](#trigger-action)
-+ [The detector enters the wrong states when I attempt to send messages to inputs by using `BatchPutMessage`\.](#wrong-state)
-+ [I get a ` ('Connection aborted.', error(54, 'Connection reset by peer'))` error when I attempt to call or invoke an API\.](#connection-aborted-error)
-+ [I get InvalidRequestException when I attempt to call `CreateDetectorModel` and `UpdateDetectorModel` APIs\.](#invalid-request)
-+ [Amazon CloudWatch Logs contains error messages, when I use `action.setTimer`\.](#cw-logs-timer)
-+ [Amazon CloudWatch Logs contains error and warning messages, when I use payload\.](#cw-logs-payload)
-+ [Error: Incompatible data types \[<inferred\-types>\] found for <reference> in the following expression: <expression>](#troubleshoot-expressions-incompatible-data-types)
++ [Detector model creation errors](#create-detector-model)
++ [Updates from a deleted detector model](#update-detector-model)
++ [Action trigger failure \(when meeting a condition\)](#no-action)
++ [Action trigger failure \(when breeching a threshold\)](#trigger-action)
++ [Incorrect state usage](#wrong-state)
++ [Connection message](#connection-aborted-error)
++ [InvalidRequestException message](#invalid-request)
++ [Amazon CloudWatch Logs `action.setTimer` errors](#cw-logs-timer)
++ [Amazon CloudWatch payload errors](#cw-logs-payload)
++ [Incompatible data types](#troubleshoot-expressions-incompatible-data-types)
 
-## I get errors when I attempt to create a detector model\.<a name="create-detector-model"></a>
+## Detector model creation errors<a name="create-detector-model"></a>
 
-**Solution:** When you create a detector model, make sure that you consider the following limitations\. 
+I get errors when I attempt to create a detector model\.
+
+### Solution<a name="w28aac35b7b7b5b1b1"></a>
+
+ When you create a detector model, you must consider the following limitations\. 
 + Only one action is allowed in each `action` field\.
 + The `condition` is required for `transitionEvents`\. It's optional for `OnEnter`, `OnInput`, and `OnExit` events\. 
 + If the `condition` field is empty, the evaluated result of the condition expression is equivalent to `true`\. 
@@ -24,76 +28,120 @@ See the following section to troubleshoot errors and find and possible solutions
 
 For more information, see [Detector model restrictions and limitations](iotevents-restrictions-detector-model.md)\. 
 
-## I get state updates from the old detector model through MQTT messages or SNS alerts after I deleted or updated a detector model a few minutes ago\.<a name="update-detector-model"></a>
+## Updates from a deleted detector model<a name="update-detector-model"></a>
 
-**Solution:** If you update, delete, or recreate a detector model \(see [UpdateDetectorModel](https://docs.aws.amazon.com/iotevents/latest/apireference/API_UpdateDetectorModel.html)\), there is some delay before all spawned detectors \(instances\) are deleted and the new model is used to recreate the detectors\. They are recreated after the new detector model takes effect and new inputs arrive\. During this time, inputs might continue to be processed by the detectors spawned by the previous version of the detector model\. During this period, you might continue to receive alerts defined by the previous detector model\. Wait for at least seven minutes before you recheck the update or report an error\. 
+I updated or deleted a detector model a few minutes ago but I'm still getting state updates from the old detector model through MQTT messages or SNS alerts\.
 
-## The detector fails to trigger an action or transition to a new state when the condition is met\.<a name="no-action"></a>
+### Solution<a name="w28aac35b7b9b5b1b1"></a>
 
-**Solution:** Verify that the evaluated result of the condition expression is a Boolean value\. If the result isn't a Boolean value, it's equivalent to `false` and doesn't trigger the `action` or transition to the `nextState` specified in the event\. For more information, see [Conditional expression syntax](https://docs.aws.amazon.com/iotevents/latest/developerguide/iotevents-conditional-expressions.html)\. 
+If you update, delete, or recreate a detector model \(see [UpdateDetectorModel](https://docs.aws.amazon.com/iotevents/latest/apireference/API_UpdateDetectorModel.html)\), there is a delay before all detector instances are deleted and the new model is used\. During this time, inputs might continue to be processed by the instances of the previous version of the detector model\. You might continue to receive alerts defined by the previous detector model\. Wait for at least seven minutes before you recheck the update or report an error\. 
 
-## Detectors don't trigger an action or a transition event when the variable reaches the specified value\.<a name="trigger-action"></a>
+## Action trigger failure \(when meeting a condition\)<a name="no-action"></a>
 
-**Solution:** If you update `setVariable` for `onInput`, `onEnter`, or `onExit`, the new value isn't used when evaluating any `condition` during the current processing cycle\. Instead, the original value is used until the current cycle is complete\. You can change this behavior by setting the `evaluationMethod` parameter in the detector model definition\. When `evaluationMethod` is set to `SERIAL`, variables are updated and event conditions evaluated in the order that the events are defined\. When `evaluationMethod` is set to `BATCH` \(the default\), variables are updated and events performed only after all event conditions are evaluated\. 
+The detector fails to trigger an action or transition to a new state when the condition is met\.
 
-## The detector enters the wrong states when I attempt to send messages to inputs by using `BatchPutMessage`\.<a name="wrong-state"></a>
+### Solution<a name="w28aac35b7c11b5b1b1"></a>
 
-**Solution:** If you use [BatchPutMessage](https://docs.aws.amazon.com/iotevents/latest/apireference/API_iotevents-data_BatchPutMessage.html) to send multiple messages to inputs, the order in which the messages or inputs are processed isn't guaranteed\. To guarantee ordering, send messages one at time and wait each time for `BatchPutMessage` to acknowledge success\. 
+Verify that the evaluated result of the detector's conditional expression is a Boolean value\. If the result isn't a Boolean value, it's equivalent to `false` and doesn't trigger the `action` or transition to the `nextState` specified in the event\. For more information, see [Conditional expression syntax](https://docs.aws.amazon.com/iotevents/latest/developerguide/iotevents-conditional-expressions.html)\. 
 
-## I get a ` ('Connection aborted.', error(54, 'Connection reset by peer'))` error when I attempt to call or invoke an API\.<a name="connection-aborted-error"></a>
+## Action trigger failure \(when breeching a threshold\)<a name="trigger-action"></a>
 
-**Solution:** Verify that OpenSSL uses TLS 1\.1 or a later version to establish the connection\. This should be the default under most Linux distributions or Windows version 7 and later\. Users of macOS might need to upgrade OpenSSL\.
+The detector doesn't trigger an action or an event transition when the variable in a conditional expression reaches a specified value\.
 
-## I get InvalidRequestException when I attempt to call `CreateDetectorModel` and `UpdateDetectorModel` APIs\.<a name="invalid-request"></a>
+### Solution<a name="w28aac35b7c13b5b1b1"></a>
 
-**Solution:** Check the following to help resolve the issue\. For more information, see [CreateDetectorModel](https://docs.aws.amazon.com/iotevents/latest/apireference/API_CreateDetectorModel.html) and [UpdateDetectorModel](https://docs.aws.amazon.com/iotevents/latest/apireference/API_UpdateDetectorModel.html)\.
+If you update `setVariable` for `onInput`, `onEnter`, or `onExit`, the new value isn't used when evaluating any `condition` during the current processing cycle\. Instead, the original value is used until the current cycle is complete\. You can change this behavior by setting the `evaluationMethod` parameter in the detector model definition\. When `evaluationMethod` is set to `SERIAL`, variables are updated and event conditions evaluated in the order that the events are defined\. When `evaluationMethod` is set to `BATCH` \(the default\), variables are updated and events performed only after all event conditions are evaluated\. 
+
+## Incorrect state usage<a name="wrong-state"></a>
+
+The detector enters the wrong states when I attempt to send messages to inputs by using `BatchPutMessage`\.
+
+### Solution<a name="w28aac35b7c15b5b1b1"></a>
+
+ If you use [BatchPutMessage](https://docs.aws.amazon.com/iotevents/latest/apireference/API_iotevents-data_BatchPutMessage.html) to send multiple messages to inputs, the order in which the messages or inputs are processed isn't guaranteed\. To guarantee ordering, send messages one at time and wait each time for `BatchPutMessage` to acknowledge success\. 
+
+## Connection message<a name="connection-aborted-error"></a>
+
+I get a `('Connection aborted.', error(54, 'Connection reset by peer'))` error when I attempt to call or invoke an API\.
+
+### Solution<a name="w28aac35b7c17b5b1b1"></a>
+
+Verify that OpenSSL uses TLS 1\.1 or a later version to establish the connection\. This should be the default under most Linux distributions or Windows version 7 and later\. Users of macOS might need to upgrade OpenSSL\.
+
+## InvalidRequestException message<a name="invalid-request"></a>
+
+I get InvalidRequestException when I attempt to call `CreateDetectorModel` and `UpdateDetectorModel` APIs\.
+
+### Solution<a name="w28aac35b7c19b5b1b1"></a>
+
+Check the following to help resolve the issue\. For more information, see [CreateDetectorModel](https://docs.aws.amazon.com/iotevents/latest/apireference/API_CreateDetectorModel.html) and [UpdateDetectorModel](https://docs.aws.amazon.com/iotevents/latest/apireference/API_UpdateDetectorModel.html)\.
 + Make sure that you don't use both `seconds` and `durationExpression` as the parameters of `SetTimerAction` at the same time\.
 + Make sure that your string expression for `durationExpression` is valid\. The string expression can contain numbers, variables \(`$variable.<variable-name>`\), or input values \(`$input.<input-name>.<path-to-datum>`\)\.
 
-## Amazon CloudWatch Logs contains error messages, when I use `action.setTimer`\.<a name="cw-logs-timer"></a>
+## Amazon CloudWatch Logs `action.setTimer` errors<a name="cw-logs-timer"></a>
 
-You can set up Amazon CloudWatch Logs to monitor AWS IoT Events detector model instances\. The following are common errors generated by AWS IoT Events, when you set the timer\. 
+You can set up Amazon CloudWatch Logs to monitor AWS IoT Events detector model instances\. The following are common errors generated by AWS IoT Events, when you use `action.setTimer`\. 
++ **Error:** Your duration expression for the timer named `<timer-name>` could not be evaluated to a number\.
 
+### Solution<a name="w28aac35b7c21b5b1b3b1b1"></a>
 
-+ **Error:** Your duration expression for the timer named <timer\-name> could not be evaluated to a number\.
+   Make sure that your string expression for `durationExpression` can be converted to a number\. Other data types, such as Boolean, aren't allowed\.
++ **Error:** The evaluated result of your duration expression for the timer named `<timer-name>` is greater than 31622440\. To ensure accuracy, make sure that your duration expression refers to a value between 60‐31622400\.
 
-  **Solution:** Make sure that your string expression for `durationExpression` can be converted to a number\. Other data types, such as Boolean, aren't allowed\.
-+ **Error:** The evaluated result of your duration expression for the timer named <timer\-name> is greater than 31622440\. To ensure accuracy, make sure that your duration expression refers to a value between 60\-31622400\.
+### Solution<a name="w28aac35b7c21b5b3b3b1b1"></a>
 
-  **Solution:** Make sure that the duration of your timer is less than or equal to 31622400 seconds\. The evaluated result of the duration is rounded down to the nearest whole number\.
-+ **Error:** The evaluated result of your duration expression for the timer named <timer\-name> is less than 60\. To ensure accuracy, make sure that your duration expression refers to a value between 60\-31622400\.
+   Make sure that the duration of your timer is less than or equal to 31622400 seconds\. The evaluated result of the duration is rounded down to the nearest whole number\.
++ **Error:** The evaluated result of your duration expression for the timer named `<timer-name>` is less than 60\. To ensure accuracy, make sure that your duration expression refers to a value between 60‐31622400\.
 
-  **Solution:** Make sure that the duration of your timer is greater than or equal to 60 seconds\. The evaluated result of the duration is rounded down to the nearest whole number\.
-+ **Error:** Your duration expression for the timer named <timer\-name> could not be evaluated\. Check the variable names, input names, and paths to the data to make sure that you refer to the existing variables and inputs\. 
+### Solution<a name="w28aac35b7c21b5b5b3b1b1"></a>
 
-  **Solution:** Make sure that your string expression refers to the existing variables and inputs\. The string expression can contain numbers, variables \(`$variable.variable-name`\), and input values \(`$input.input-name.path-to-datum`\)\.
-+ **Error:** Failed to set the timer named <timer\-name>\. Check your duration expression, and try again\.
+   Make sure that the duration of your timer is greater than or equal to 60 seconds\. The evaluated result of the duration is rounded down to the nearest whole number\.
++ **Error:** Your duration expression for the timer named `<timer-name>` could not be evaluated\. Check the variable names, input names, and paths to the data to make sure that you refer to the existing variables and inputs\. 
 
-  **Solution:** See the [SetTimerAction](https://docs.aws.amazon.com/iotevents/latest/apireference/API_SetTimerAction.html) action to ensure that you specified the correct parameters, and then set the timer again\. 
+### Solution<a name="w28aac35b7c21b5b7b3b1b1"></a>
+
+   Make sure that your string expression refers to the existing variables and inputs\. The string expression can contain numbers, variables \(`$variable.variable-name`\), and input values \(`$input.input-name.path-to-datum`\)\.
++ **Error:** Failed to set the timer named `<timer-name>`\. Check your duration expression, and try again\.
+
+### Solution<a name="w28aac35b7c21b5b9b3b1b1"></a>
+
+   See the [SetTimerAction](https://docs.aws.amazon.com/iotevents/latest/apireference/API_SetTimerAction.html) action to ensure that you specified the correct parameters, and then set the timer again\. 
 
 For more information, see [ Enable Amazon CloudWatch logging when developing AWS IoT Events detector models](https://docs.aws.amazon.com/iotevents/latest/developerguide/best-practices.html#best-practices-cw-logs)\. 
 
-## Amazon CloudWatch Logs contains error and warning messages, when I use payload\.<a name="cw-logs-payload"></a>
+## Amazon CloudWatch payload errors<a name="cw-logs-payload"></a>
 
 You can set up Amazon CloudWatch Logs to monitor AWS IoT Events detector model instances\. The following are common errors and warnings generated by AWS IoT Events, when you configure the action payload\. 
-+ **Error:** We couldn't evaluate your expression for the action\. Make sure that the variable names, input names, and paths to the data refer to the existing variables and input values\. Note that the maximum allowable size of the payload is 1 KB\.
++ **Error:** We couldn't evaluate your expression for the action\. Make sure that the variable names, input names, and paths to the data refer to the existing variables and input values\. Also, verify that the size of the payload is less than 1 KB, the maximum allowed size of a payload\.
 
-  **Solution:** Make sure that you enter the correct variable names, input names, and paths to the data\. You might also receive this error message if the action payload is larger than 1 KB\.
-+ **Error:** We couldn't parse your content expression for the payload of <action\-type>\. Enter a content expression with the correct syntax\.
+### Solution<a name="w28aac35b7c23b5b1b3b1b1"></a>
 
-  **Solution:** The content expression can contain strings \(`'string'`\), variables \(`$variable.variable-name`\), input values \(`$input.input-name.path-to-datum`\), string concatenations, and strings that contain `${}`\.
+   Make sure that you enter the correct variable names, input names, and paths to the data\. You might also receive this error message if the action payload is larger than 1 KB\.
++ **Error:** We couldn't parse your content expression for the payload of `<action-type>`\. Enter a content expression with the correct syntax\.
+
+### Solution<a name="w28aac35b7c23b5b3b3b1b1"></a>
+
+   The content expression can contain strings \(`'string'`\), variables \(`$variable.variable-name`\), input values \(`$input.input-name.path-to-datum`\), string concatenations, and strings that contain `${}`\.
 + **Error:** Your payload expression \{*expression*\} isn't valid\. The defined payload type is JSON, so you must specify an expression that AWS IoT Events would evaluate to a string\.
 
-  **Solution:** If the specified payload type is JSON, AWS IoT Events first checks if the service can evaluate your expression to a string \. The evaluated result can't be a Boolean or number\. If the validation fails, you might receive this error\.
+### Solution<a name="w28aac35b7c23b5b5b5b1b1"></a>
+
+   If the specified payload type is JSON, AWS IoT Events first checks if the service can evaluate your expression to a string\. The evaluated result can't be a Boolean or number\. If the validation fails, you might receive this error\.
 + **Warning:** The action was executed, but we couldn't evaluate your content expression for the action payload to valid JSON\. The defined payload type is JSON\.
 
-  **Solution:** Make sure that AWS IoT Events can evaluate your content expression for the action payload to valid JSON, if you define the payload type as `JSON`\. AWS IoT Events executes the action even if AWS IoT Events can't evaluate the content expression to valid JSON\.
+### Solution<a name="w28aac35b7c23b5b7b3b1b1"></a>
+
+   Make sure that AWS IoT Events can evaluate your content expression for the action payload to valid JSON, if you define the payload type as `JSON`\. AWS IoT Events runs the action even if AWS IoT Events can't evaluate the content expression to valid JSON\.
 
 For more information, see [ Enable Amazon CloudWatch logging when developing AWS IoT Events detector models](https://docs.aws.amazon.com/iotevents/latest/developerguide/best-practices.html#best-practices-cw-logs)\.
 
-## Error: Incompatible data types \[<inferred\-types>\] found for <reference> in the following expression: <expression><a name="troubleshoot-expressions-incompatible-data-types"></a>
+## Incompatible data types<a name="troubleshoot-expressions-incompatible-data-types"></a>
 
-**Solution:** You might receive this error for one of the following reasons:
+Message: Incompatible data types \[`<inferred-types>`\] found for `<reference>` in the following expression: `<expression>`
+
+### Solution<a name="w28aac35b7c25b5b1b1"></a>
+
+ You might receive this error for one of the following reasons:
 + The evaluated results of your references are not compatible with other operands in your expressions\.
 + The type of the argument passed to a function is not supported\.
 

@@ -76,7 +76,7 @@ If you have difficulty downloading the file, the template is also available in t
 You might modify this CloudFormation template to customize the Lambda function and its behavior\.
 
 **Note**  
-AWS Lambda retries function errors twice\. If the function doesn't have enough capacity to handle all incoming requests, events might wait in the queue for hours or days to be sent to the function\. You can configure a dead\-letter queue on the function to capture events that weren't successfully processed\. For more information, see [Asynchronous invocation](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html) in the *AWS Lambda Developer Guide*\.
+AWS Lambda retries function errors twice\. If the function doesn't have enough capacity to handle all incoming requests, events might wait in the queue for hours or days to be sent to the function\. You can configure an undelivered\-message queue \(DLQ\) on the function to capture events that weren't successfully processed\. For more information, see [Asynchronous invocation](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html) in the *AWS Lambda Developer Guide*\.
 
 You can also create or configure the stack in the CloudFormation console\. For more information, see [Working with stacks](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacks.html), in the *AWS CloudFormation User Guide*\.
 

@@ -1,13 +1,8 @@
 # Monitoring with alarms<a name="iotevents-alarms"></a>
 
-
-|  | 
-| --- |
-|  The alarms feature is in preview release for AWS IoT Events, AWS IoT SiteWise, and SiteWise Monitor, and is subject to change\. We recommend that you use this feature only with test data, and not in production environments\. While the alarms feature is in preview, you must download the alarms preview AWS SDK to use the API operations for this feature\. These API operations aren't available in the public AWS SDK\. For more information, see [Alarms preview AWS CLI and AWS SDKs](https://docs.aws.amazon.com/iotevents/latest/developerguide/alarms-preview-SDKs.html)\.  | 
-
 AWS IoT Events alarms help you monitor your data for changes\. The data can be metrics that you measure for your equipment and processes\. You can create alarms that send notifications when a threshold is breached\. Alarms help you detect issues, streamline maintenance, and optimize performance of your equipment and processes\.
 
-Like detectors, alarms are instances of alarm models\. The alarm model specifies what to detect, when to send notifications, who gets notified, and more\. You can also specify one or more [supported actions](https://docs.aws.amazon.com/iotevents/latest/developerguide/iotevents-supported-actions.html) that occur when the alarm state changes\. AWS IoT Events routes [input attributes](https://docs.aws.amazon.com/iotevents/latest/developerguide/iotevents-detector-input.html) derived from your data to the appropriate alarms\. If the data that you're monitoring is outside the specified range, the alarm is invoked\. You can also acknowledge the alarms or set them to the snooze mode\.
+Alarms are instances of alarm models\. The alarm model specifies what to detect, when to send notifications, who gets notified, and more\. You can also specify one or more [supported actions](https://docs.aws.amazon.com/iotevents/latest/developerguide/iotevents-supported-actions.html) that occur when the alarm state changes\. AWS IoT Events routes [input attributes](https://docs.aws.amazon.com/iotevents/latest/developerguide/iotevents-detector-input.html) derived from your data to the appropriate alarms\. If the data that you're monitoring is outside the specified range, the alarm is invoked\. You can also acknowledge the alarms or set them to the snooze mode\.
 
 ## Working with AWS IoT SiteWise<a name="alarms-collaborations.title"></a>
 
@@ -19,7 +14,7 @@ AWS IoT SiteWise doesn't evaluate the state of external alarms\. Additionally, y
 
 You can use the SiteWise Monitor feature to view the state of external alarms in SiteWise Monitor portals\.
 
-For more information, see [Monitoring data with alarms](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/industrial-alarms.html) in the *AWS IoT SiteWise User Guide* and [Monitoring with alarms](https://docs.aws.amazon.com/iot-sitewise/latest/appguide/monitor-alarms.html) in the *AWS IoT SiteWise Monitor Application Guide*\.
+For more information, see [Monitoring data with alarms](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/industrial-alarms.html) in the *AWS IoT SiteWise User Guide* and [Monitoring with alarms](https://docs.aws.amazon.com/iot-sitewise/latest/appguide/monitor-alarms.html) in the *SiteWise Monitor Application Guide*\.
 
 ## Acknowledge flow<a name="acknowledge-flow"></a>
 

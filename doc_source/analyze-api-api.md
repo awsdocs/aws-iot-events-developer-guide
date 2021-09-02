@@ -1,31 +1,4 @@
-# Analyzing a detector model<a name="analyze-detector-model"></a>
-
-You can use the AWS IoT Events console, [API](https://docs.aws.amazon.com/iotevents/latest/apireference/), [AWS Command Line Interface \(AWS CLI\)](https://docs.aws.amazon.com/cli/latest/reference/iotevents/index.html), or [AWS SDK](https://docs.aws.amazon.com/iot/latest/developerguide/iot-sdks.html) to analyze your detector model\.
-
-**Note**  
-You must fix all errors before you can publish your detector model\.
-We recommend that you review warnings and take necessary actions before you use your detector model in production environments\. Otherwise, the detector model might not work as expected\.
-You can have up to 10 analyses in the `RUNNING` status at the same time\.
-
-## Analyzing a detector model \(console\)<a name="analyze-api-console"></a>
-
-The following steps use the AWS IoT Events console to analyze a detector model\.
-
-1. Sign in to the [AWS IoT Events console](https://console.aws.amazon.com/iotevents/)\.
-
-1. In the navigation pane, choose **Detector models**\.
-
-1. Under **Detector models**, choose the target detector model\.
-
-1. On your detector model page, choose **Edit**\.
-
-1. In the upper\-right corner, choose **Run analysis**\.  
-![\[Screenshot of how to analyze detector models in the AWS IoT Events console.\]](http://docs.aws.amazon.com/iotevents/latest/developerguide/images/analyzeAPI1.png)
-
-   The following is an example analysis result in the AWS IoT Events console\.  
-![\[Screenshot of how to analyze detector models In the AWS IoT Events console.\]](http://docs.aws.amazon.com/iotevents/latest/developerguide/images/analyzeAPI2.png)
-
-## Analyzing a detector model \(AWS CLI\)<a name="analyze-api-api"></a>
+# Analyzing a detector model \(AWS CLI\)<a name="analyze-api-api"></a>
 
 The following steps use the AWS CLI to analyze a detector model\.
 

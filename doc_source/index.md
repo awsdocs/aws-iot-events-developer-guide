@@ -1,7 +1,7 @@
 # AWS IoT Events Developer Guide
 
 -----
-*****Copyright &copy;  Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
+*****Copyright &copy; Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
 Amazon's trademarks and trade dress may not be used in 
@@ -46,7 +46,6 @@ Amazon's trademarks and trade dress may not be used in
    + [Managing alarm notifications](lambda-support.md)
       + [Using the Lambda function provided by AWS IoT Events](use-alarm-notifications.md)
       + [Managing recipients](sso-authorization-recipients.md)
-   + [Alarms preview AWS CLI and AWS SDKs](alarms-preview-SDKs.md)
 + [Security in AWS IoT Events](security.md)
    + [Identity and access management for AWS IoT Events](security-iam.md)
       + [How AWS IoT Events works with IAM](security_iam_service-with-iam.md)
@@ -63,8 +62,10 @@ Amazon's trademarks and trade dress may not be used in
 + [AWS IoT Events quotas](iotevents-quotas.md)
 + [Tagging your AWS IoT Events resources](tagging-iotevents.md)
 + [Troubleshooting AWS IoT Events](iotevents-troubleshooting.md)
+   + [Common AWS IoT Events issues and solutions](iotevents-error-messages.md)
    + [Troubleshooting a detector model by running analyses](iotevents-analyze-api.md)
-      + [Analyzing a detector model](analyze-detector-model.md)
-   + [AWS IoT Events error messages](iotevents-error-messages.md)
+      + [Detector model analysis and diagnostic information](analyze-diagnostic-information.md)
+      + [Analyzing a detector model (Console)](analyze-api-console.md)
+      + [Analyzing a detector model (AWS CLI)](analyze-api-api.md)
 + [AWS IoT Events commands](iotevents-commands.md)
 + [Document history](doc-history.md)
