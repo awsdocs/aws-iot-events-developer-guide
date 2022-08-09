@@ -282,6 +282,9 @@ The `sns` topic publish action lets you publish an Amazon SNS message\. For the 
 
 Amazon Simple Notification Service \(Amazon Simple Notification Service\) is a web service that coordinates and manages the delivery or sending of messages to subscribing endpoints or clients\. For more information, see [What is Amazon SNS?](https://docs.aws.amazon.com/sns/latest/dg/welcome.html) in the *Amazon Simple Notification Service Developer Guide*\.
 
+**Note**  
+The SNS action doesn't support [Amazon SNS FIFO \(First\-In\-First\-Out\) topics](https://docs.aws.amazon.com/sns/latest/dg/sns-fifo-topics.html)\. Because the rules engine is a fully distributed service, there is no guarantee of message order when the SNS action is invoked\.
+
 ------
 #### [ More information \(2\) ]
 
@@ -308,6 +311,9 @@ For more information, see [SNSTopicPublishAction](https://docs.aws.amazon.com/io
 The `sns` action lets you send data to an Amazon SQS queue\. For the list of supported Regions, see [Amazon Simple Queue Service endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/sqs-service.html) in the *Amazon Web Services General Reference*\.
 
 Amazon Simple Queue Service \(Amazon SQS\) offers a secure, durable, and available hosted queue that lets you integrate and decouple distributed software systems and components\. For more information, see [What is Amazon Simple Queue Service>](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html) in the *Amazon Simple Queue Service Developer Guide*\.
+
+**Note**  
+The SQS action doesn't support [Amazon SQS FIFO \(First\-In\-First\-Out\) queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html)\. Because the rules engine is a fully distributed service, there is no guarantee of message order when the SQS action is triggered\.
 
 ------
 #### [ More information \(3\) ]
