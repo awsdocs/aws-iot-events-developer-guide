@@ -51,7 +51,7 @@ For a substitution template, you must use `${}`, and the template must be in sin
 
 **String concatenation**  
 For a string concatenation, you must use `+`\. A string concatenation can also contain a combination of literals, operators, functions, references, and substitution templates\.  
-+ The evaluated result of the following expression is a string, `Greengrass Temperature Table 2000-01-01`\.
++ The evaluated result of the following expression is a string, `Greenhouse Temperature Table 2000-01-01`\.
 
   ```
   'Greenhouse Temperature Table ' + $input.GreenhouseInput.date

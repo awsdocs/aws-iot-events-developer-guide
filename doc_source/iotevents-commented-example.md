@@ -1021,7 +1021,7 @@ Use the `BatchPutMessage` operation to send a `"seedTemperatureInput"` message t
 CLI command:  
 
 ```
-aws iotevents-data batch-put-message --cli-input-json file://seedExample.json
+aws iotevents-data batch-put-message --cli-input-json file://seedExample.json --cli-binary-format raw-in-base64-out
 ```
 File: `seedExample.json`  
 
@@ -1050,7 +1050,7 @@ Use the `BatchPutMessage` operation to send a `"temperatureInput"` message to re
 CLI command:  
 
 ```
-aws iotevents-data batch-put-message --cli-input-json file://temperatureExample.json
+aws iotevents-data batch-put-message --cli-input-json file://temperatureExample.json --cli-binary-format raw-in-base64-out
 ```
 File: `temperatureExample.json`  
 
@@ -1078,7 +1078,7 @@ Use the `BatchPutMessage` operation to send a `"seedTemperatureInput"` message t
 CLI command:  
 
 ```
-aws iotevents-data batch-put-message --cli-input-json file://seedSetDesiredTemp.json
+aws iotevents-data batch-put-message --cli-input-json file://seedSetDesiredTemp.json --cli-binary-format raw-in-base64-out
 ```
 File: `seedSetDesiredTemp.json`  
 
@@ -1146,7 +1146,7 @@ If the sensor sends a message on the topic `"update/temperature/Area51/03"` with
 This results in data being ingested into AWS IoT Events as if the following `"BatchPutMessage"` API call had been made\.
 
 ```
-aws iotevents-data batch-put-message --cli-input-json file://spoofExample.json
+aws iotevents-data batch-put-message --cli-input-json file://spoofExample.json --cli-binary-format raw-in-base64-out
 ```
 
 File: `spoofExample.json`

@@ -24,7 +24,7 @@ If you monitor several devices or processes, specify a field in each input that 
 If you monitor a single process \(even if several devices or subprocesses are sending inputs\), you don't specify a unique identifying `key` field\. In this case, a single detector \(instance\) is created when the first input arrives\.
 
 **Send messages as inputs to your detector model**  
-There are several ways to send a message from a device or process as an input into an AWS IoT Events detector that don't require you to perform additional formatting on the message\. In this tutorial, you use the AWS IoT console to write an [ AWS IoT Events action](https://docs.aws.amazon.com/iot/latest/developerguide/iot-rule-actions.html#iotevents-rule) rule for the AWS IoT rules engine that forwards your message data into AWS IoT Events\.  
+There are several ways to send a message from a device or process as an input into an AWS IoT Events detector that don't require you to perform additional formatting on the message\. In this tutorial, you use the AWS IoT console to write an [AWS IoT Events action](https://docs.aws.amazon.com/iot/latest/developerguide/iot-rule-actions.html#iotevents-rule) rule for the AWS IoT rules engine that forwards your message data into AWS IoT Events\.  
 To do this, identify the input by name and continue to use the AWS IoT console to generate messages that are forwarded as inputs to AWS IoT Events\.
 
 **Note**  
@@ -32,6 +32,6 @@ This tutorial uses the console to create the same `input` and `detector model` s
 
 **Topics**
 + [Prerequisites](iotevents-getting-started-prereqs.md)
-+ [Create an input](iotevents-detector-input.md)
++ [Create an input](create-input-overview.md)
 + [Create a detector model](iotevents-detector-model.md)
 + [Send inputs to test the detector model](iotevents-iot-rules-engine.md)

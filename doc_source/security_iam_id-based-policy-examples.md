@@ -9,7 +9,7 @@ To learn how to create an IAM identity\-based policy using these example JSON po
 + [Using the AWS IoT Events console](#security_iam_id-based-policy-examples-console)
 + [Allow users to view their own permissions](#security_iam_id-based-policy-examples-view-own-permissions)
 + [Accessing one AWS IoT Events input](#security_iam_id-based-policy-examples-access-one-input)
-+ [Viewing AWS IoT Events *inputs* based on tags](#security_iam_id-based-policy-examples-view-input-tags)
++ [Viewing AWS IoT Events*inputs* based on tags](#security_iam_id-based-policy-examples-view-input-tags)
 
 ## Policy best practices<a name="security_iam_service-with-iam-policy-best-practices"></a>
 
@@ -146,7 +146,7 @@ In this example, you want to grant an IAM user in your AWS account access to one
 }
 ```
 
-## Viewing AWS IoT Events *inputs* based on tags<a name="security_iam_id-based-policy-examples-view-input-tags"></a>
+## Viewing AWS IoT Events*inputs* based on tags<a name="security_iam_id-based-policy-examples-view-input-tags"></a>
 
 You can use conditions in your identity\-based policy to control access to AWS IoT Events resources based on tags\. This example shows how you might create a policy that allows viewing an *input*\. However, permission is granted only if the *input* tag `Owner` has the value of that user's user name\. This policy also grants the permissions necessary to complete this action on the console\.
 

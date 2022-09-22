@@ -55,34 +55,55 @@ The following example policy applies two tag\-based restrictions\. An IAM user r
 
 ```
 {
-    "Version" : "2012-10-17",
-    "Statement" : [
+    "Version": "2012-10-17",
+    "Statement": [
         {
-          "Effect" : "Deny",
-          "Action" : "iotevents:*",
-          "Resource" : "*",
-          "Condition" : {
-            "StringEquals" : {
-              "aws:RequestTag/env" : "prod"
+            "Effect": "Deny",
+            "Action": [
+                "iotevents:CreateDetectorModel",
+                "iotevents:CreateAlarmModel",
+                "iotevents:CreateInput",
+                "iotevents:TagResource"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "aws:RequestTag/env": "prod"
+                }
             }
-          }
         },
         {
-          "Effect" : "Deny",
-          "Action" : "iotevents:*",
-          "Resource" : "*",
-          "Condition" : {
-            "StringEquals" : {
-              "aws:ResourceTag/env" : "prod"
+            "Effect": "Deny",
+            "Action": [
+                "iotevents:DescribeDetectorModel",
+                "iotevents:DescribeAlarmModel",
+                "iotevents:UpdateDetectorModel",
+                "iotevents:UpdateAlarmModel",
+                "iotevents:DeleteDetectorModel",
+                "iotevents:DeleteAlarmModel",
+                "iotevents:ListDetectorModelVersions",
+                "iotevents:ListAlarmModelVersions",
+                "iotevents:UpdateInput",
+                "iotevents:DescribeInput",
+                "iotevents:DeleteInput",
+                "iotevents:ListTagsForResource",
+                "iotevents:TagResource",
+                "iotevents:UntagResource",
+                "iotevents:UpdateInputRouting"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "StringLike": {
+                    "aws:ResourceTag/env": "prod"
+                }
             }
-          }
         },
         {
-          "Effect": "Allow",
-          "Action": [
-            "iotevents:*"
-          ],
-          "Resource": "*"
+            "Effect": "Allow",
+            "Action": [
+                "iotevents:*"
+            ],
+            "Resource": "*"
         }
     ]
 }

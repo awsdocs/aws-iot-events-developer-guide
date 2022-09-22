@@ -849,97 +849,6 @@ Response:
 }
 ```
 
-## BatchUpdateDetector example<a name="iotevents-examples-hvac-batch-update-detector"></a>
-
-In this example, `"BatchUpdateDetector"` is used to change operational parameters for a working detector instance\.
-
-CLI command used:
-
-```
-aws iotevents-data batch-update-detector --cli-input-json file://areaDM.BUD.json
-```
-
-File: `areaDM.BUD.json`
-
-```
-{
-  "detectors": [
-    {
-      "messageId": "0001",
-      "detectorModelName": "areaDetectorModel",
-      "keyValue": "Area51",
-      "state": {
-        "stateName": "start",
-        "variables": [
-          {
-            "name": "desiredTemperature",
-            "value": "22"
-          },
-          {
-            "name": "averageTemperature",
-            "value": "22"
-          },
-          {
-            "name": "allowedError",
-            "value": "1.0"
-          },
-          {
-            "name": "rangeHigh",
-            "value": "30.0"
-          },
-          {
-            "name": "rangeLow",
-            "value": "15.0"
-          },
-          {
-            "name": "anomalousHigh",
-            "value": "60.0"
-          },
-          {
-            "name": "anomalousLow",
-            "value": "0.0"
-          },
-          {
-            "name": "sensorCount",
-            "value": "12"
-          },
-          {
-            "name": "noDelay",
-            "value": "true"
-          },
-          {
-            "name": "goodToGo",
-            "value": "true"
-          },
-          {
-            "name": "sensorId",
-            "value": "0"
-          },
-          {
-            "name": "reportedTemperature",
-            "value": "0.1"
-          },
-          {
-            "name": "resetMe",
-            "value": "true"
-          }
-        ],
-        "timers": [
-        ]
-      }
-    }
-  ]
-}
-```
-
-Response:
-
-```
-{
-    "batchUpdateDetectorErrorEntries": []
-}
-```
-
 ## BatchPutMessage examples<a name="iotevents-examples-hvac-input-usage-examples"></a>
 
 In this example, `"BatchPutMessage"` is used to create a detector instance for an area and define the initial operating parameters\.
@@ -947,7 +856,7 @@ In this example, `"BatchPutMessage"` is used to create a detector instance for a
 CLI command used:
 
 ```
-aws iotevents-data batch-put-message --cli-input-json file://seedExample.json
+aws iotevents-data batch-put-message --cli-input-json file://seedExample.json --cli-binary-format raw-in-base64-out
 ```
 
 File: `seedExample.json`
@@ -977,7 +886,7 @@ In this example, `"BatchPutMessage"` is used to report temperature sensor readin
 CLI command used:
 
 ```
-aws iotevents-data batch-put-message --cli-input-json file://temperatureExample.json
+aws iotevents-data batch-put-message --cli-input-json file://temperatureExample.json --cli-binary-format raw-in-base64-out
 ```
 
 File: `temperatureExample.json`
@@ -1007,7 +916,7 @@ In this example, `"BatchPutMessage"` is used to change the desired temperature f
 CLI command used:
 
 ```
-aws iotevents-data batch-put-message --cli-input-json file://seedSetDesiredTemp.json
+aws iotevents-data batch-put-message --cli-input-json file://seedSetDesiredTemp.json --cli-binary-format raw-in-base64-out
 ```
 
 File: `seedSetDesiredTemp.json`
@@ -1198,6 +1107,97 @@ Response:
         "detectorModelName": "areaDetectorModel", 
         "detectorModelVersion": "1"
     }
+}
+```
+
+## BatchUpdateDetector example<a name="iotevents-examples-hvac-batch-update-detector"></a>
+
+In this example, `"BatchUpdateDetector"` is used to change operational parameters for a working detector instance\.
+
+CLI command used:
+
+```
+aws iotevents-data batch-update-detector --cli-input-json file://areaDM.BUD.json
+```
+
+File: `areaDM.BUD.json`
+
+```
+{
+  "detectors": [
+    {
+      "messageId": "0001",
+      "detectorModelName": "areaDetectorModel",
+      "keyValue": "Area51",
+      "state": {
+        "stateName": "start",
+        "variables": [
+          {
+            "name": "desiredTemperature",
+            "value": "22"
+          },
+          {
+            "name": "averageTemperature",
+            "value": "22"
+          },
+          {
+            "name": "allowedError",
+            "value": "1.0"
+          },
+          {
+            "name": "rangeHigh",
+            "value": "30.0"
+          },
+          {
+            "name": "rangeLow",
+            "value": "15.0"
+          },
+          {
+            "name": "anomalousHigh",
+            "value": "60.0"
+          },
+          {
+            "name": "anomalousLow",
+            "value": "0.0"
+          },
+          {
+            "name": "sensorCount",
+            "value": "12"
+          },
+          {
+            "name": "noDelay",
+            "value": "true"
+          },
+          {
+            "name": "goodToGo",
+            "value": "true"
+          },
+          {
+            "name": "sensorId",
+            "value": "0"
+          },
+          {
+            "name": "reportedTemperature",
+            "value": "0.1"
+          },
+          {
+            "name": "resetMe",
+            "value": "true"
+          }
+        ],
+        "timers": [
+        ]
+      }
+    }
+  ]
+}
+```
+
+Response:
+
+```
+{
+    An error occurred (InvalidRequestException) when calling the BatchUpdateDetector operation: Number of variables in the detector exceeds the limit 10
 }
 ```
 

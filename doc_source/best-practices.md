@@ -9,7 +9,7 @@ Follow these best practices to get the maximum benefit from AWS IoT Events\.
 
 ## Enable Amazon CloudWatch logging when developing AWS IoT Events detector models<a name="best-practices-cw-logs"></a>
 
-Amazon CloudWatch monitors your AWS resources and the applications that you run on AWS in real time\. With CloudWatch, you gain systemwide visibility into resource use, application performance, and operational health\. When you develop or debug an AWS IoT Events detector model, CloudWatch helps you know what AWS IoT Events is doing, and any errors it encounters\.
+Amazon CloudWatch monitors your AWS resources and the applications that you run on AWS in real time\. With CloudWatch, you gain system\-wide visibility into resource use, application performance, and operational health\. When you develop or debug an AWS IoT Events detector model, CloudWatch helps you know what AWS IoT Events is doing, and any errors that it encounters\.
 
 **To enable CloudWatch**
 
@@ -27,13 +27,13 @@ Amazon CloudWatch monitors your AWS resources and the applications that you run 
 1. On the **Settings** page, choose **Edit**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/iotevents/latest/developerguide/images/settings.png)
 
-1. On the **Edit logging options** page, do the following\.
+1. On the **Edit logging options** page, do the following:
 
    1.  Choose the **Level of verbosity**\.
 
    1. For **Select role**, select a role with sufficient permissions to perform the logging actions that you chose\.
 
-   1. If you chose **Debug** for the **Level of verbosity**, you can also choose **Add Model Option** and add a **Detector Model Name** and \(optional\) **KeyValue** to specify the detector model\(s\) and specific detectors \(instances\) to log\.
+   1. If you chose **Debug** for the **Level of verbosity**, you can also choose **Add Model Option** and add a **Detector Model Name** and \(optional\) **KeyValue** to specify the detector models and specific detectors \(instances\) to log\.
 
    1. Choose **Update**\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/iotevents/latest/developerguide/images/edit-logging-options.png)
@@ -43,11 +43,11 @@ Amazon CloudWatch monitors your AWS resources and the applications that you run 
 
 ## Publish regularly to save your detector model when working in the AWS IoT Events console<a name="best-practices-console"></a>
 
-When you use the AWS IoT Events console, your work in progress is saved locally in your browser \(cookies\)\. But you must choose **Publish** to save your detector model to AWS IoT Events\. After you publish a detector model, your published work is available in any browser that you use to access your account\. Before you publish, your work isn't saved\. 
+When you use the AWS IoT Events console, your work in progress is saved locally in your browser\. However, you must choose **Publish** to save your detector model to AWS IoT Events\. After you publish a detector model, your published work will become available in any browser that you use to access your account\.
 
 **Note**  
-After you publish a detector model, you can't change its name but you can continue to modify its definition\.
+If you don't publish your work, it will not be saved\. After you publish a detector model, you can't change its name\. However, you can continue modifying its definition\.
 
 ## Store your AWS IoT Events data to avoid possible data loss due to a long period of inactivity<a name="best-practices-inactivity"></a>
 
-If you don't use AWS IoT Events for a significant period of time \(that is, don't incur charges and don't create detector models\) your data, including your detector models, might be deleted automatically\. However, we won't delete data or detector models without providing you with at least 30 days prior notice\. If you need to store data for an extended period of time, consider using [AWS storage services](https://docs.aws.amazon.com/whitepapers/latest/cost-optimization-storage-optimization/aws-storage-services.html)\.
+If you don't use AWS IoT Events for a significant period of time, your data, including your detector models, might be deleted automatically\. A significant period of time could mean, for example, you don't incur charges and don't create detector models\. However, we won't delete data or detector models without providing you with at least a 30 day notice prior\. If you need to store data for an extended period of time, consider using [AWS storage services](https://docs.aws.amazon.com/whitepapers/latest/cost-optimization-storage-optimization/aws-storage-services.html)\.

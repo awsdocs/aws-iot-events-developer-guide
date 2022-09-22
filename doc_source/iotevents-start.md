@@ -168,7 +168,7 @@ To complete this example, you need the ARN of an existing [Amazon SNS topic](htt
 
    1. Replace the JSON in the editor with the following example\.
 
-   1. Change the `Resource` value to the ARN of the [Amazon SNS topic](https://docs.aws.amazon.com/sns/latest/dg/welcome.html) that to use in AWS IoT Events\.
+   1. Change the `Resource` value to the ARN of the [Amazon SNS topic](https://docs.aws.amazon.com/sns/latest/dg/welcome.html) to use in AWS IoT Events\.
 
    1. Choose **Review policy**\. You can also use wildcard characters in the Amazon SNS topic ARN to grant broader permissions, but be aware of the security issues this raises\.
 

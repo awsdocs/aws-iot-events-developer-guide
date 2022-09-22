@@ -22,7 +22,7 @@ By default, AWS IoT Events generates a standard payload in JSON for any action\.
 ------
 #### [ IoT topic publish action ]
 
-The `iotTopicPublish` action lets you publish an MQTT message through the AWS IoT message broker\. For the list of supported Regions, see [AWS IoT Core endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/iot-core.html) in the *Amazon Web Services General Reference*\.
+The AWS IoT Core action lets you publish an MQTT message through the AWS IoT message broker\. For the list of supported Regions, see [AWS IoT Core endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/iot-core.html) in the *Amazon Web Services General Reference*\.
 
 The AWS IoT message broker connects AWS IoT clients by sending messages from publishing clients to subscribing clients\. For more information, see [Message broker for AWS IoT](https://docs.aws.amazon.com/iot/latest/developerguide/iot-message-broker.html) in the *AWS IoT Developer Guide*\.
 
@@ -50,7 +50,7 @@ For more information, see [IotTopicPublishAction](https://docs.aws.amazon.com/io
 ------
 #### [ IoT Events action ]
 
-The `iotEvents` action lets you send data to AWS IoT Events as input\. For the list of supported Regions, see [AWS IoT Events endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/iot-events.html) in the *Amazon Web Services General Reference*\.
+The AWS IoT Events action lets you send data to AWS IoT Events as input\. For the list of supported Regions, see [AWS IoT Events endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/iot-events.html) in the *Amazon Web Services General Reference*\.
 
 AWS IoT Events lets you to monitor your equipment or device fleets for failures or changes in operation, and to trigger actions when such events occur\. For more information, see [What is AWS IoT Events?](https://docs.aws.amazon.com/iotevents/latest/developerguide/what-is-iotevents.html) in the *AWS IoT Events Developer Guide*\.
 
@@ -77,7 +77,7 @@ For more information, see [IotEventsAction](https://docs.aws.amazon.com/iotevent
 ------
 #### [ IoT SiteWise action ]
 
-The `iotSiteWise` action lets you send data to an asset property in AWS IoT SiteWise\. For the list of supported Regions, see [AWS IoT SiteWise endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/iot-sitewise.html) in the *Amazon Web Services General Reference*\.
+The AWS IoT SiteWise action lets you send data to an asset property in AWS IoT SiteWise\. For the list of supported Regions, see [AWS IoT SiteWise endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/iot-sitewise.html) in the *Amazon Web Services General Reference*\.
 
 AWS IoT SiteWise is a managed service that lets you collect, organize, and analyze data from industrial equipment at scale\. For more information, see [What is AWS IoT SiteWise?](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/what-is-sitewise.html) in the *AWS IoT SiteWise User Guide*\.
 
@@ -138,7 +138,7 @@ For more information, see [IotSiteWiseAction](https://docs.aws.amazon.com/ioteve
 ------
 #### [ DynamoDB action ]
 
-The `dynamoDB` action lets you send data to a DynamoDB table\. One column of the DynamoDB table receives all attribute\-value pairs in the action payload that you specify\. For the list of supported Regions, see [Amazon DynamoDB endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/ddb.html) in the *Amazon Web Services General Reference*\.
+The Amazon DynamoDB action lets you send data to a DynamoDB table\. One column of the DynamoDB table receives all attribute\-value pairs in the action payload that you specify\. For the list of supported Regions, see [Amazon DynamoDB endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/ddb.html) in the *Amazon Web Services General Reference*\.
 
 Amazon DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance with seamless scalability\. For more information, see [What is DynamoDB?](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html) in the *Amazon DynamoDB Developer Guide*\.
 
@@ -193,7 +193,7 @@ For more information, see [DynamoDBAction](https://docs.aws.amazon.com/iotevents
 ------
 #### [ DynamoDBv2 action ]
 
-The `dynamoDBv2` action lets you write data to a DynamoDB table\. A separate column of the DynamoDB table receives one attribute\-value pair in the action payload that you specify\. For the list of supported Regions, see [Amazon DynamoDB endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/ddb.html) in the *Amazon Web Services General Reference*\.
+The Amazon DynamoDB\(v2\) action lets you write data to a DynamoDB table\. A separate column of the DynamoDB table receives one attribute\-value pair in the action payload that you specify\. For the list of supported Regions, see [Amazon DynamoDB endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/ddb.html) in the *Amazon Web Services General Reference*\.
 
 Amazon DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance with seamless scalability\. For more information, see [What is DynamoDB?](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html) in the *Amazon DynamoDB Developer Guide*\.
 
@@ -221,9 +221,9 @@ For more information, see [DynamoDBv2Action](https://docs.aws.amazon.com/ioteven
 ------
 #### [ Firehose action ]
 
-The `firehose` action lets you send data to an Kinesis Data Firehose delivery stream\. For the list of supported Regions, see [Amazon Kinesis Data Firehose endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/fh.html) in the *Amazon Web Services General Reference*\.
+The Amazon Kinesis Data Firehose action lets you send data to an Kinesis Data Firehose delivery stream\. For the list of supported Regions, see [Amazon Kinesis Data Firehose endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/fh.html) in the *Amazon Web Services General Reference*\.
 
-Amazon Kinesis Data Firehose is a fully managed service for delivering real\-time streaming data to destinations such as Amazon Simple Storage Service \(Amazon Simple Storage Service\), Amazon Redshift, Amazon Elasticsearch Service \(Amazon ES\), and Splunk\. For more information, see [What is Amazon Kinesis Data Firehose?](https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html) in the *Amazon Kinesis Data Firehose Developer Guide*\.
+Amazon Kinesis Data Firehose is a fully managed service for delivering real\-time streaming data to destinations such as Amazon Simple Storage Service \(Amazon Simple Storage Service\), Amazon Redshift, Amazon OpenSearch Service \(OpenSearch Service\), and Splunk\. For more information, see [What is Amazon Kinesis Data Firehose?](https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html) in the *Amazon Kinesis Data Firehose Developer Guide*\.
 
 ------
 #### [ More information \(3\) ]
@@ -251,7 +251,7 @@ For more information, see [FirehoseAction](https://docs.aws.amazon.com/iotevents
 ------
 #### [ Lambda action ]
 
-The `lambda` action lets you call a Lambda function\. For the list of supported Regions, see [AWS Lambda endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/lambda-service.html) in the *Amazon Web Services General Reference*\.
+The AWS Lambda action lets you call a Lambda function\. For the list of supported Regions, see [AWS Lambda endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/lambda-service.html) in the *Amazon Web Services General Reference*\.
 
 AWS Lambda is a compute service that lets you run code without provisioning or managing servers\. For more information, see [What is AWS Lambda?](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html) in the *AWS Lambda Developer Guide*\.
 
@@ -278,9 +278,12 @@ For more information, see [LambdaAction](https://docs.aws.amazon.com/iotevents/l
 ------
 #### [ SNS action ]
 
-The `sns` topic publish action lets you publish an Amazon SNS message\. For the list of supported Regions, see [Amazon Simple Notification Service endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/sns.html) in the *Amazon Web Services General Reference*\.
+The Amazon SNS topic publish action lets you publish an Amazon SNS message\. For the list of supported Regions, see [Amazon Simple Notification Service endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/sns.html) in the *Amazon Web Services General Reference*\.
 
 Amazon Simple Notification Service \(Amazon Simple Notification Service\) is a web service that coordinates and manages the delivery or sending of messages to subscribing endpoints or clients\. For more information, see [What is Amazon SNS?](https://docs.aws.amazon.com/sns/latest/dg/welcome.html) in the *Amazon Simple Notification Service Developer Guide*\.
+
+**Note**  
+The Amazon SNS topic publish action doesn't support [Amazon SNS FIFO \(first in, first out\) topics](https://docs.aws.amazon.com/sns/latest/dg/sns-fifo-topics.html)\. Because the rules engine is a fully distributed service, the messages may not display in a specified order when the Amazon SNS action is initiated\.
 
 ------
 #### [ More information \(2\) ]
@@ -305,9 +308,12 @@ For more information, see [SNSTopicPublishAction](https://docs.aws.amazon.com/io
 ------
 #### [ SQS action ]
 
-The `sns` action lets you send data to an Amazon SQS queue\. For the list of supported Regions, see [Amazon Simple Queue Service endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/sqs-service.html) in the *Amazon Web Services General Reference*\.
+The Amazon SQS action lets you send data to an Amazon SQS queue\. For the list of supported Regions, see [Amazon Simple Queue Service endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/sqs-service.html) in the *Amazon Web Services General Reference*\.
 
 Amazon Simple Queue Service \(Amazon SQS\) offers a secure, durable, and available hosted queue that lets you integrate and decouple distributed software systems and components\. For more information, see [What is Amazon Simple Queue Service>](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html) in the *Amazon Simple Queue Service Developer Guide*\.
+
+**Note**  
+The Amazon SQS action doesn't support [Amazon SQS FIFO \(first in, first out\) topics](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html)\. Because the rules engine is a fully distributed service, the messages may not display in a specified order when the  Amazon SQS action is initiated\.
 
 ------
 #### [ More information \(3\) ]

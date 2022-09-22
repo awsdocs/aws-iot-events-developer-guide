@@ -58,16 +58,16 @@ sed -i '' "s/100008/100009/g" messages/*
 sed -i '' "s/200008/200009/g" messages/* 
 
 #Send HighPressure message
-aws iotevents-data batch-put-message --cli-input-json file://messages/highPressureMessage.json
+aws iotevents-data batch-put-message --cli-input-json file://messages/highPressureMessage.json --cli-binary-format raw-in-base64-out
 
 #Send HighTemperature message
-aws iotevents-data batch-put-message --cli-input-json file://messages/highTemperatureMessage.json
+aws iotevents-data batch-put-message --cli-input-json file://messages/highTemperatureMessage.json --cli-binary-format raw-in-base64-out
 
 #Send LowPressure message
-aws iotevents-data batch-put-message --cli-input-json file://messages/lowPressureMessage.json
+aws iotevents-data batch-put-message --cli-input-json file://messages/lowPressureMessage.json --cli-binary-format raw-in-base64-out
 
 #Send LowTemperature message
-aws iotevents-data batch-put-message --cli-input-json file://messages/lowTemperatureMessage.json
+aws iotevents-data batch-put-message --cli-input-json file://messages/lowTemperatureMessage.json --cli-binary-format raw-in-base64-out
 ```
 
 ## Detector models<a name="iotevents-examples-cranes-detector-models"></a>

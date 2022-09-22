@@ -59,7 +59,7 @@ If you choose **AWS IoT SiteWise asset property**, you must have created an asse
 
    1. \(Optional\) For **Recipient**, choose the recipient\.
 
-      To add more users to your recipient list, choose **Add new user**\. You must add new users to your AWS SSO store before you can add them to your alarm model\. For more information, see [Managing recipients](sso-authorization-recipients.md)\.
+      To add more users to your recipient list, choose **Add new user**\. You must add new users to your IAM Identity Center store before you can add them to your alarm model\. For more information, see [Managing recipients](sso-authorization-recipients.md)\.
 
    1. \(Optional\) For **Additional custom message**, enter a message that describes what the alarm detects and what actions the recipients should take\.
 

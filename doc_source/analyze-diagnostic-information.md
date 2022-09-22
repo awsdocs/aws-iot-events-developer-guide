@@ -41,7 +41,7 @@ The types of errors described above provide diagnostic information about a detec
 An analysis result with information about `Location`, corresponds to the following error message: 
 + **Message** – Contains additional information about the analysis result\. This can be an information, warning, or error message\.
 
-#### <a name="w28aac35b9c13b9b7b5b1b3b1b1"></a>
+#### <a name="w44aac36b9c13b9b7b5b1b3b1b1"></a>
 
    You might receive this error message if you specified an action that AWS IoT Events currently doesn't support\. For a list of supported actions, see [Supported actions](iotevents-supported-actions.md)\.
 
@@ -50,12 +50,12 @@ An analysis result with information about `Location`, corresponds to the followi
 An analysis result with information about `supported‐actions`, corresponds to the following error messages: 
 + **Message:** Invalid action type present in action definition: *action\-definition*\.
 
-#### <a name="w28aac35b9c13b9b9b5b1b3b1b1"></a>
+#### <a name="w44aac36b9c13b9b9b5b1b3b1b1"></a>
 
    You might receive this error message if you specified an action that AWS IoT Events currently doesn't support\. For a list of supported actions, see [Supported actions](iotevents-supported-actions.md)\.
-+ **Message:** DetectorModel definition has an *aws\-service* action, but the *aws\-service* service is not supported in the regionregion *region\-name*\.
++ **Message:** DetectorModel definition has an *aws\-service* action, but the *aws\-service* service is not supported in the region *region\-name*\.
 
-#### <a name="w28aac35b9c13b9b9b5b3b3b1b1"></a>
+#### <a name="w44aac36b9c13b9b9b5b3b3b1b1"></a>
 
    You might receive this error message if the action that you specified is supported by AWS IoT Events, but the action isn't available in your current Region\. This might occur when you try to send data to an AWS service that isn't available in the Region\. You must also choose the same Region for both AWS IoT Events and the AWS services that you're using\.
 
@@ -64,37 +64,37 @@ An analysis result with information about `supported‐actions`, corresponds to 
 An analysis result with information about `service‐limits`, corresponds to the following error messages: 
 + **Message:** Content Expression allowed in payload exceeded the limit *content\-expression\-size* bytes in event *event\-name* in state *state\-name*\.
 
-#### <a name="w28aac35b9c13b9c11b5b1b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c11b5b1b3b1b1"></a>
 
    You might receive this error message if the content expression for your action payload is greater than 1024 bytes\. The size of the content expression for a payload can be up to 1024 bytes\.
 + **Message:** Number of states allowed in detector model definition exceeded the limit *states\-per\-detector\-model*\.
 
-#### <a name="w28aac35b9c13b9c11b5b3b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c11b5b3b3b1b1"></a>
 
    You might receive this error message if your detector model has more than 20 states\. A detector model can have up to 20 states\.
 + **Message:** The duration for timer *timer\-name* should be at least *minimum\-timer\-duration* seconds long\.
 
-#### <a name="w28aac35b9c13b9c11b5b5b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c11b5b5b3b1b1"></a>
 
    You might receive this error message if the duration of your timer is less than 60 seconds\. We recommend that the duration of a timer is between 60 and 31622400 seconds\. If you specify an expression for the duration of your timer, the evaluated result of the duration expression is rounded down to the nearest whole number\.
 + **Message:** Number of actions allowed per event exceeded the limit *actions\-per\-event* in detector model definition
 
-#### <a name="w28aac35b9c13b9c11b5b7b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c11b5b7b3b1b1"></a>
 
    You might receive this error message if the event has more than 10 actions\. You can have up to 10 actions for each event in your detector model\.
 + **Message:** Number of transition events allowed per state exceeded the limit *transition\-events\-per\-state* in detector model definition\.
 
-#### <a name="w28aac35b9c13b9c11b5b9b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c11b5b9b3b1b1"></a>
 
    You might receive this error message if the state has more than 20 transition events\. You can have up to 20 transition events for each state in your detector model\.
 + **Message:** Number of events allowed per state exceeded the limit *events\-per\-state* in detector model definition
 
-#### <a name="w28aac35b9c13b9c11b5c11b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c11b5c11b3b1b1"></a>
 
    You might receive this error message if the state has more than 20 events\. You can have up to 20 events for each state in your detector model\.
 + **Message:** The maximum number of detector models that can be associated with a single input may have reached the limit\. Input *input\-name* is used in *detector\-models\-per\-input* detector model routes\.
 
-#### <a name="w28aac35b9c13b9c11b5c13b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c11b5c13b3b1b1"></a>
 
    You might receive this warning message if you tried to route an input to more than 10 detector models\. You can have up to 10 different detector models associated with a single detector model\.
 
@@ -103,86 +103,142 @@ An analysis result with information about `service‐limits`, corresponds to the
 An analysis result with information about `structure`, corresponds to the following error messages: 
 + **Message:** Actions may only have one type defined, but found an action with *number\-of\-types* types\. Please split into separate Actions\.
 
-#### <a name="w28aac35b9c13b9c13b5b1b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c13b5b1b3b1b1"></a>
 
    You might receive this error message if you specified two or more actions in a single field by using API operations to create or update your detector model\. You can define an array of `Action` objects\. Make sure that you define each action as a separate object\.
 + **Message:** The TransitionEvent *transition\-event\-name* transitions to a non\-existent state *state\-name*\.
 
-#### <a name="w28aac35b9c13b9c13b5b3b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c13b5b3b3b1b1"></a>
 
    You might receive this error message if AWS IoT Events couldn't find the next state that your transition event referenced\. Make sure that the next state is defined and that you entered the correct state name\.
 + **Message:** The DetectorModelDefinition had a shared state name: found state *state\-name* with *number\-of\-states* repetitions\.
 
-#### <a name="w28aac35b9c13b9c13b5b5b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c13b5b5b3b1b1"></a>
 
    You might receive this error message if you use the same name for one or more states\. Make sure that you give a unique name to each state in your detector model\. The state name must have 1\-128 characters\. Valid characters: a\-z, A\-Z, 0\-9, \_ \(underscore\), and \- \(hyphen\)\.
 + **Message:** The Definition's initialStateName *initial\-state\-name* did not correspond to a defined State\.
 
-#### <a name="w28aac35b9c13b9c13b5b7b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c13b5b7b3b1b1"></a>
 
    You might receive this error message if the initial state name is incorrect\. The detector model remains in the initial \(start\) state until an input arrives\. Once an input arrives, the detector model immediately transitions to the next state\. Make sure that the initial state name is the name of a defined state and that you enter the correct name\.
 + **Message:** Detector Model Definition must use at least one Input in a condition\.
 
-#### <a name="w28aac35b9c13b9c13b5b9b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c13b5b9b3b1b1"></a>
 
    You might receive this error if you didn't specify an input in a condition\. You must use at least one input in at least one condition\. Otherwise, AWS IoT Events doesn't evaluate incoming data\.
 + **Message:** Only one of seconds and durationExpression can be set in SetTimer\.
 
-#### <a name="w28aac35b9c13b9c13b5c11b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c13b5c11b3b1b1"></a>
 
    You might receive this error message if you used both `seconds` and `durationExpression` for your timer\. Make sure that you use either `seconds` or `durationExpression` as the parameters of `SetTimerAction`\. For more information, see [SetTimerAction](https://docs.aws.amazon.com/iotevents/latest/apireference/API_SetTimerAction.html) in the *AWS IoT Events API Reference*\.
++  **Message:** An action in your detector model is unreachable\. Check the condition that initiates the action\. 
+
+#### <a name="w44aac36b9c13b9c13b5c15b3b1b1"></a>
+
+   If an action in your detector model is unreachable, the event's condition evaluates to false\. Check the condition of the event that contains the action, to ensure that it evaluates to true\. When the event's condition evaluates to true, the action should become reachable\.
++ **Message:** An input attribute is being read, but this may be caused by a timer expiration\.
+
+#### <a name="w44aac36b9c13b9c13b5c17b3b1b1"></a>
+
+   An input attribute’s value can be read when either of the following occurs: 
+  + A new input value has been received\.
+  + When a timer in the detector has expired\.
+
+  
+
+  To ensure that an input attribute is being evaluated only when the new value for that input is received, include a call to the `triggerType(“Message”)` function in your condition as follows:
+
+  The original condition being evaluated in the detector model: 
+
+  ```
+  if ($input.HeartBeat.status == “OFFLINE”)
+  ```
+
+  would become similar to the following: 
+
+  ```
+  if ( triggerType("MESSAGE") &&  $input.HeartBeat.status == “OFFLINE”)
+  ```
+
+  where a call to the `triggerType(“Message”)` function comes before the initial input provided in the condition\. By using this technique, the `triggerType("Message")` function will evaluate to true and satisfy the condition of receiving a new input value\. For more information about the usage of the `triggerType` function, search for `triggerType` in the [Expressions](https://docs.aws.amazon.com/iotevents/latest/developerguide/iotevents-expressions.html) section in the *AWS IoT Events Developer Guide* 
++ **Message:** A state in your detector model is unreachable\. Check the condition that will cause a transition to the desired state\.
+
+#### <a name="w44aac36b9c13b9c13b5c19b3b1b1"></a>
+
+   If a state in your detector model is unreachable, a condition that causes an incoming transition to that state evaluates to false\. Check that the conditions of the incoming transitions to that unreachable state in your detector model evaluates to true, so the desired state can become reachable\.
++ **Message:** An expiring timer can cause an unexpected amount of messages to be sent\.
+
+#### <a name="w44aac36b9c13b9c13b5c21b3b1b1"></a>
+
+   To prevent your detector model from entering into an infinite state of sending an unexpected amount of messages because a timer has expired, consider using a call to the `triggerType("Message")` function, in the conditions of your detector model as follows: 
+
+  The original condition being evaluated in the detector model: 
+
+  ```
+  if (timeout("awake"))
+  ```
+
+  would be transformed into a condition that looks similar to the following: 
+
+  ```
+   if (triggerType("MESSAGE") && timeout("awake")) 
+  ```
+
+  where a call to the `triggerType(“Message”)` function comes before the initial input provided in the condition\.
+
+  This change prevents initiating timer actions in your detector, preventing an infinite loop of messages being sent\. For more information about how to use timer actions in your detector, see the [Using built\-in actions](https://docs.aws.amazon.com/iotevents/latest/developerguide/built-in-actions.html) page of the *AWS IoT Events Developer Guide*
 
 ### `expression-syntax`<a name="analyze-expression-syntax"></a>
 
 An analysis result with information about `expression‐syntax`, corresponds to the following error messages: 
 + **Message:** Your payload expression \{*expression*\} isn't valid\. The defined payload type is JSON, so you must specify an expression that AWS IoT Events would evaluate to a string\.
 
-#### <a name="w28aac35b9c13b9c15b5b1b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c15b5b1b3b1b1"></a>
 
    If the specified payload type is JSON, AWS IoT Events first checks if the service can evaluate your expression to a string\. The evaluated result can't be a Boolean or number\. If the validation doesn't succeed, you might receive this error\.
 + **Message:** `SetVariableAction.value` must be an expression\. Failed to parse value '*variable\-value*'
 
-#### <a name="w28aac35b9c13b9c15b5b3b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c15b5b3b3b1b1"></a>
 
    You can use `SetVariableAction` to define a variable with a `name` and `value`\. The `value` can be a string, number, or Boolean value\. You can also specify an expression for the `value`\. For more information, see [SetVariableAction](https://docs.aws.amazon.com/iotevents/latest/apireference/API_SetVariableAction.html), in the *AWS IoT Events API Reference*\.
 + **Message:** We couldn't parse your expression of the attributes \(*attribute\-name*\) for the DynamoDB action\. Enter expression with the correct syntax\.
 
-#### <a name="w28aac35b9c13b9c15b5b5b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c15b5b5b3b1b1"></a>
 
    You must use expressions for all parameters in `DynamoDBAction`\. substitution templates\. For more information, see [DynamoDBAction](https://docs.aws.amazon.com/iotevents/latest/apireference/API_DynamoDBAction.html) in the *AWS IoT Events API Reference*\.
 + **Message:** We couldn't parse your expression of the tableName for the DynamoDBv2 action\. Enter expression with the correct syntax\.
 
-#### <a name="w28aac35b9c13b9c15b5b7b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c15b5b7b3b1b1"></a>
 
    The `tableName` in `DynamoDBv2Action` must be a string\. You must use an expression for the `tableName`\. The expressions accept literals, operators, functions, references, and substitution templates\. For more information, see [DynamoDBv2Action](https://docs.aws.amazon.com/iotevents/latest/apireference/API_DynamoDBv2Action.html) in the *AWS IoT Events API Reference*\.
 + **Message:** We couldn't evaluate your expression to valid JSON\. The DynamoDBv2 action only supports the JSON payload type\.
 
-#### <a name="w28aac35b9c13b9c15b5b9b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c15b5b9b3b1b1"></a>
 
    The payload type for `DynamoDBv2` must be JSON\. Make sure that AWS IoT Events can evaluate your content expression for the payload to valid JSON\. For more information, see [DynamoDBv2Action](https://docs.aws.amazon.com/iotevents/latest/apireference/API_DynamoDBv2Action.html), in the *AWS IoT Events API Reference*\. 
 + **Message:** We couldn't parse your content expression for the payload of *action\-type*\. Enter a content expression with the correct syntax\.
 
-#### <a name="w28aac35b9c13b9c15b5c11b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c15b5c11b3b1b1"></a>
 
    The content expression can contain strings \('*string*'\), variables \($variable\.*variable\-name*\), input values \($input\.*input\-name*\.*path\-to\-datum*\), string concatenations, and strings that contain `${}`\. 
 + **Message:** Customized Payloads must be non\-empty\.
 
-#### <a name="w28aac35b9c13b9c15b5c13b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c15b5c13b3b1b1"></a>
 
    You might receive this error message, if you chose **Custom payload** for your action and didn't enter a content expression in the AWS IoT Events console\. If you choose **Custom payload**, you must enter a content expression under **Custom payload**\. For more information, see [Payload](https://docs.aws.amazon.com/iotevents/latest/apireference/API_Payload.html) in the *AWS IoT Events API Reference*\.
 + **Message:** Failed to parse duration expression '*duration\-expression*' for timer '*timer\-name*'\.
 
-#### <a name="w28aac35b9c13b9c15b5c15b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c15b5c15b3b1b1"></a>
 
    The evaluated result of your duration expression for the timer must be a value between 60–31622400\. The evaluated result of the duration is rounded down to the nearest whole number\.
 + **Message:** Failed to parse expression '*expression*' for *action\-name*
 
-#### <a name="w28aac35b9c13b9c15b5c17b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c15b5c17b3b1b1"></a>
 
    You might receive this message if the expression for the specified action has incorrect syntax\. Make sure that you enter an expression with the correct syntax\. For more information, see [Syntax](iotevents-expressions.md#expression-syntax)\.
 + **Message:** Your *fieldName* for `IotSitewiseAction` couldn't be parsed\. You must use correct syntax in your expression\.
 
-#### <a name="w28aac35b9c13b9c15b5c19b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c15b5c19b3b1b1"></a>
 
    You might receive this error if AWS IoT Events couldn't parse your *fieldName* for `IotSitewiseAction`\. Make sure the *fieldName* uses an expression that AWS IoT Events can parse\. For more information, see [IotSiteWiseAction](https://docs.aws.amazon.com/iotevents/latest/apireference/API_IotSiteWiseAction.html) in the *AWS IoT Events API Reference*\.
 
@@ -191,17 +247,17 @@ An analysis result with information about `expression‐syntax`, corresponds to 
 An analysis result with information about `data‐type`, corresponds to the following error messages: 
 + **Message:** Duration expression *duration\-expression* for timer *timer\-name* is not valid, it must return a number\.
 
-#### <a name="w28aac35b9c13b9c17b5b1b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c17b5b1b3b1b1"></a>
 
    You might receive this error message if AWS IoT Events couldn't evaluate the duration expression for your timer to a number\. Make sure that your `durationExpression` can be converted to a number\. Other data types, such as Boolean, aren't supported\. 
 + **Message:** Expression *condition\-expression* is not a valid condition expression\.
 
-#### <a name="w28aac35b9c13b9c17b5b3b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c17b5b3b3b1b1"></a>
 
    You might receive this error message if AWS IoT Events couldn't evaluate your `condition-expression` to a Boolean value\. The Boolean value must be either `TRUE` or `FALSE`\. Make sure that your condition expression can be converted to a Boolean value\. If the result isn't a Boolean value, it's equivalent to `FALSE` and doesn't invoke the actions or transition to the `nextState` specified in the event\.
 + **Message:** Incompatible data types \[*inferred\-types*\] found for *reference* in the following expression: *expression*
 
-#### <a name="w28aac35b9c13b9c17b5b5b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c17b5b5b3b1b1"></a>
 
    **Solution**: All expressions for the same input attribute or variable in the detector model must reference the same data type\. 
 
@@ -228,12 +284,12 @@ For the `convert(type, expression)` function, if you use a reference for the *ty
   For more information, see [References](iotevents-expressions.md#expression-reference)\.
 + **Message:** Incompatible data types \[*inferred\-types*\] used with *reference*\. This may lead to a runtime error\.
 
-#### <a name="w28aac35b9c13b9c17b5b7b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c17b5b7b3b1b1"></a>
 
    You might receive this warning message if two expressions for the same input attribute or variable reference two data types\. Make sure that your expressions for the same input attribute or variable reference the same data type in the detector model\.
 + **Message:** The data types \[*inferred‐types*\] that you entered for the operator \[*operator*\] aren't compatible for the following expression: '*expression*'
 
-#### <a name="w28aac35b9c13b9c17b5b9b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c17b5b9b3b1b1"></a>
 
    You might receive this error message if your expression combines data types that are not compatible with a specified operator\. For example, in the following expression, the operator `+` is compatible with Integer, Decimal, and String data types, but not operands of Boolean data type\.
 
@@ -244,32 +300,32 @@ For the `convert(type, expression)` function, if you use a reference for the *ty
   You must make sure that the data types you use with an operator are compatible\.
 + **Message:** The data types \[*inferred‐types*\] found for *input‐attribute* aren't compatible and can lead to a runtime error\.
 
-#### <a name="w28aac35b9c13b9c17b5c11b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c17b5c11b3b1b1"></a>
 
    You might receive this error message if two expressions for the same input attribute reference two data types for either the `OnEnterLifecycle` of a state, or for both the `OnInputLifecycle` and `OnExitLifecycle` of a state\. Make sure your expressions in `OnEnterLifecycle` \(or, both `OnInputLifecycle` and `OnExitLifecycle`\) reference the same data type for each state of your detector model\.
 + **Message:** The payload expression \[*expression*\] isn't valid\. Specify an expression that would evaluate to a string at runtime because the payload type is JSON format\.
 
-#### <a name="w28aac35b9c13b9c17b5c13b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c17b5c13b3b1b1"></a>
 
    You might receive this error if your specified payload type is JSON, but AWS IoT Events can't evaluate its expression to a String\. Make sure the evaluated result is a String, not a Boolean or a number\. 
 + **Message:** Your interpolated expression \{*interpolated\-expression*\} must evaluate to either an integer or a Boolean value at runtime\. Otherwise, your payload expression \{*payload\-expression*\} won't be parseable at runtime as valid JSON\.
 
-#### <a name="w28aac35b9c13b9c17b5c15b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c17b5c15b3b1b1"></a>
 
    You might receive this error message if AWS IoT Events couldn't evaluate your interpolated expression to an integer or a Boolean value\. Make sure your interpolated expression can be converted to an integer or a Boolean value, because other data types, such as tring, aren't supported\.
 + **Message:** The expression type in the `IotSitewiseAction` field *expression* is defined as type *defined‐type* and inferred as type *inferred‐type*\. The defined type and the inferred type must be the same\.
 
-#### <a name="w28aac35b9c13b9c17b5c17b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c17b5c17b3b1b1"></a>
 
    You might receive this error message if your expression in the `propertyValue` of `IotSitewiseAction` has a data type defined differently than the data type inferred by AWS IoT Events\. Make sure you use the same data type for all instances of this expression in your detector model\.
 + **Message:** The data types \[*inferred\-types*\] used for `setTimer` action don't evaluate to `Integer` for the following expression: *expression*
 
-#### <a name="w28aac35b9c13b9c17b5c19b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c17b5c19b3b1b1"></a>
 
    You might receive this error message if the inferred data type for your duration expression isn't Integer or Decimal\. Make sure your `durationExpression` can be converted to a number\. Other data types, such as Boolean and String, aren't supported\.
 + **Message:** The data types \[*inferred\-types*\] used with operands of the comparison operator \[*operator*\] are not compatible in the following expression: *expression*
 
-#### <a name="w28aac35b9c13b9c17b5c21b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c17b5c21b3b1b1"></a>
 
    The inferred data types for the operands of the *operator* in the conditional expression \(*expression*\) of your detector model don't match\. The operands must be used with the matching data types in all other parts of your detector model\.
 
@@ -281,25 +337,30 @@ You can use `convert` to change the data type of an expression in your detector 
 An analysis result with information about `referenced‐data`, corresponds to the following error messages: 
 + **Message:** Detected broken Timer: timer *timer\-name* is used in an expression but is never set\.
 
-#### <a name="w28aac35b9c13b9c19b5b1b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c19b5b1b3b1b1"></a>
 
    You might receive this error message if you use a timer that isn't set\. You must set a timer before you use it in an expression\. Also, make sure that you enter the correct timer name\.
 + **Message:** Detected broken Variable: variable *variable\-name* is used in an expression but is never set\.
 
-#### <a name="w28aac35b9c13b9c19b5b3b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c19b5b3b3b1b1"></a>
 
    You might receive this error message if you use a variable that isn't set\. You must set a variable before you use it in an expression\. Also, make sure that you enter the correct variable name\.
++ **Message:** Detected broken Variable: a variable is used in an expression before being set to a value\.
+
+#### <a name="w44aac36b9c13b9c19b5b5b3b1b1"></a>
+
+   Each variable must be assigned to a value before it can be evaluated in an expression\. Set the value of the variable before every use so its value can be retrieved\. Also, make sure that you enter the correct variable name\.
 
 ### `referenced-resource`<a name="analyze-referenced-resource"></a>
 
 An analysis result with information about `referenced‐resource`, corresponds to the following error messages: 
 + **Message:** Detector Model Definition contains reference to Input that does not exist\.
 
-#### <a name="w28aac35b9c13b9c21b5b1b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c21b5b1b3b1b1"></a>
 
    You might receive this error message if you use expressions to reference an input that doesn't exist\. Make sure that your expression references an existing input and enter the correct input name\. If you don't have an input, create one first\.
 + **Message:** Detector Model Definition contains invalid InputName: *input\-name*
 
-#### <a name="w28aac35b9c13b9c21b5b3b3b1b1"></a>
+#### <a name="w44aac36b9c13b9c21b5b3b3b1b1"></a>
 
    You might receive this error message if your detector model contains an invalid input name\. Make sure that you enter the correct input name\. The input name must have 1\-128 characters\. Valid characters: a\-z, A\-Z, 0\-9, \_ \(underscore\), and \- \(hyphen\)\.

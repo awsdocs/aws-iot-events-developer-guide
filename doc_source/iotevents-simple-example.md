@@ -14,7 +14,7 @@ To monitor your devices and processes, they must have a way to get telemetry dat
 Before your devices can send data in this way, you must define one or more inputs\. To do so, give each input a name and specify which fields in the incoming message data that the input monitors\.
 
 **Create a detector model**  
-Create a *detector model* \(a model of your equipment or process\) using *states*\. For each state, define conditional \(Boolean\) logic that evaluates the incoming inputs to detect significant events\. When an event is detected, it can change the state or trigger custom\-built or predefined actions using other AWS services\. You can define additional events that trigger actions when entering or exiting a state and, optionally, when a condition is met\.
+Create a *detector model* \(a model of your equipment or process\) using *states*\. For each state, define conditional \(Boolean\) logic that evaluates the incoming inputs to detect significant events\. When an event is detected, it can change the state or initiate custom\-built or predefined actions using other AWS services\. You can define additional events that initiate actions when entering or exiting a state and, optionally, when a condition is met\.
 
 **Monitor several devices or processes**  
 If you're monitoring several devices or processes and you want to keep track of each of them separately, specify a field in each input that identifies the particular device or process the input comes from\. See the `key` field in `CreateDetectorModel`\. When a new device is identified \(a new value is seen in the input field identified by the `key`\), a detector instance is created\. The new detector instance continues to respond to inputs coming from that particular device until its detector model is updated or deleted\. You have as many unique detectors \(instances\) as there are unique values in input `key` fields\.
@@ -219,7 +219,7 @@ When you create a detector model or update an existing one, it takes several min
 Use the following AWS CLI command to send a message with data that breaches the threshold\.
 
 ```
-aws iotevents-data batch-put-message --cli-input-json file://highPressureMessage.json 
+aws iotevents-data batch-put-message --cli-input-json file://highPressureMessage.json --cli-binary-format raw-in-base64-out
 ```
 
 The file "`highPressureMessage.json`" contains the following\.
@@ -243,7 +243,7 @@ At this point, a detector \(instance\) is created to monitor events for the moto
 Run the following AWS CLI command to send a message with data that is beneath the pressure threshold\.
 
 ```
-aws iotevents-data batch-put-message --cli-input-json file://normalPressureMessage.json 
+aws iotevents-data batch-put-message --cli-input-json file://normalPressureMessage.json --cli-binary-format raw-in-base64-out
 ```
 
 The file `normalPressureMessage.json` contains the following\.
@@ -327,4 +327,4 @@ IoT> {
 
 If you have defined any timers, their current state is also shown in the SNS message payloads\.
 
-The message payloads contain information about the state of the detector \(instance\) at the time the message was sent \(that is, at the time the SNS action was executed\)\. You can use the [https://docs.aws.amazon.com/iotevents/latest/apireference/API_iotevents-data_DescribeDetector.html](https://docs.aws.amazon.com/iotevents/latest/apireference/API_iotevents-data_DescribeDetector.html) operation to get similar information about the state of the detector\.
+The message payloads contain information about the state of the detector \(instance\) at the time the message was sent \(that is, at the time the SNS action was run\)\. You can use the [https://docs.aws.amazon.com/iotevents/latest/apireference/API_iotevents-data_DescribeDetector.html](https://docs.aws.amazon.com/iotevents/latest/apireference/API_iotevents-data_DescribeDetector.html) operation to get similar information about the state of the detector\.
